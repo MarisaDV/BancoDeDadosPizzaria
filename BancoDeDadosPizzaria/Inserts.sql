@@ -29,3 +29,115 @@ INSERT INTO Funcionarios VALUES
 	('Catarina Santos', 'Rua Antônio de Albuquerque, 255, Centro, Florianópolis', '9-9909-4413', '12332112361'),
 	('José Benedito', 'Praça Barão do Rio Branco, 909, Centro, Aracajú', '9-9909-4413', '12332112360');
 	
+INSERT INTO Estoque VALUES
+	(1,"Extrato de Tomate",12),
+	(2,"Requeijão Cremoso",10),
+	(3,"Farinha de Trigo",20),
+	(4,"Queijo Mussarela",10),
+	(5,"Frango desfiado",14),
+	(6,"Oregano",4),
+	(7,"Calabresa",7),
+	(8,"Bacon",18),
+	(9,"Ovo",29),
+	(10,"Cebola",13),
+	(11,"Queijo parmesão",13),
+	(12,"Manjericão",7),
+	(13,"Abobrinha",3),
+	(14,"Beringela",9),
+	(15,"Bróculis",10),
+	(16,"Palmito",21),
+	(17,"Champignon",12),
+	(18,"Lombo",11),
+	(19,"Tomate",2),
+	(20,"Carne Seca",2);
+
+INSERT INTO Produtos VALUES
+	(1,"Calabresa"),
+	(2,"Frango C/ Catupiry"),
+	(3,"Lombo"),
+	(4,"Margarita"),
+	(5,"Portuguesa"),
+	(6,"Napolitana"),
+	(7,"Frango Especial"),
+	(8,"Toscana"),
+	(9,"Nordestina"),
+	(10,"Vegetariana")
+
+INSERT INTO Ingredientes VALUES
+	(1,1,1),
+	(1,4,1),
+	(1,7,1),
+	(1,10,1),
+	
+	(2,1,1),
+	(2,5,1),
+	(2,2,1),
+	
+	(3,1,1),
+	(3,4,1),
+	(3,1,18),
+
+	(4,1,1),
+	(4,4,1),
+	(4,19,1),
+	(4,11,1),
+	(4,12,1),
+
+	(5,1,1),
+	(5,9,1),
+	(5,4,1),
+	(5,10,1),
+
+	(6,1,1),
+	(6,4,1),
+	(6,11,1),
+	(6,19,1),
+
+	(7,1,1),
+	(7,5,1),
+	(7,2,1),
+	(7,8,1),	
+	(7,6,1),
+
+	(8,1,1),
+	(8,4,1),
+	(8,7,1),
+	(8,6,1),
+
+	(9,1,1),
+	(9,2,1),
+	(9,20,1),
+	(9,10,1),
+
+	(10,1,1),
+	(10,13,1),
+	(10,14,1),
+	(10,15,1),
+	(10,16,1),
+	(10,17,1);
+
+INSERT INTO Fornecedor VALUES
+	(1,'Alimentos Já', '01010101-01010','Rua Carlos Bom Tempo, 2215, Centro, Rio Branco', '9-9909-4413'),
+	(2,'Boa Massa', '02020202-02020','Rua Conde de Monte Cristo, 21, São Paulo', '9-9909-4413'),
+
+INSERT INTO Estoque_Fornecedor VALUES
+	(1,2),
+	(2,1),
+	(3,1),
+	(4,2),
+	(5,2),
+	(6,2),
+	(7,1),
+	(8,1),
+	(9,1),
+	(10,2),
+	(11,2),
+	(12,2),
+	(13,1),
+	(14,1),
+	(15,2),
+	(16,2),
+	(17,1),
+	(18,1),
+	(19,2),
+	(20,1);
