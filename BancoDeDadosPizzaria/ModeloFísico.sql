@@ -113,7 +113,7 @@ GO
 -- Table Pizzaria.Produtos
 -- -----------------------------------------------------
 CREATE TABLE Produtos (
-  idProdutos INT NOT NULL,
+  idProduto INT NOT NULL,
   Nome VARCHAR(45) NULL,
   PRIMARY KEY (idProdutos)
 )
@@ -130,18 +130,24 @@ CREATE TABLE Estoque (
 )
 GO
 
+
 -- -----------------------------------------------------
 -- Table Pizzaria.Ingredientes
 -- -----------------------------------------------------
 CREATE TABLE Ingredientes (
-  idIngredientes INT NOT NULL,
-  Estoque_idEstoque INT NOT NULL,
-  PRIMARY KEY (idIngredientes),
-  CONSTRAINT fk_Ingredientes_Estoque1
-    FOREIGN KEY (Estoque_idEstoque)
-    REFERENCES Estoque (idEstoque)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+	idIngrediente INT NOT NULL,
+	idProduto INT NOT NULL,
+	idEstoque INT NOT NULL,
+	PRIMARY KEY (idProduto, idEstoque),
+	Qtd TINYINT NOT NULL,
+	FOREIGN KEY (idProduto)
+		REFERENCES Produtos (idProduto)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+    FOREIGN KEY (idEstoque)
+		REFERENCES Estoque (idEstoque) 
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
 )
 GO
 
@@ -158,6 +164,8 @@ CREATE TABLE Fornecedor (
 )
 GO
 
+
+
 -- -----------------------------------------------------
 -- Table Pizzaria.Estoque_Fornecedor
 -- -----------------------------------------------------
@@ -172,25 +180,6 @@ CREATE TABLE Estoque_Fornecedor (
   CONSTRAINT fk_Estoque_has_Fornecedor_Fornecedor1
     FOREIGN KEY (Fornecedor_idFornecedor)
     REFERENCES Fornecedor (idFornecedor)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-)
-GO
-
--- -----------------------------------------------------
--- Table Pizzaria.Ingredientes_Produtos
--- -----------------------------------------------------
-CREATE TABLE Ingredientes_Produtos (
-  Ingredientes_idIngredientes INT NOT NULL,
-  Produtos_idProdutos INT NOT NULL,
-  CONSTRAINT fk_Ingredientes_has_Produtos_Ingredientes1
-    FOREIGN KEY (Ingredientes_idIngredientes)
-    REFERENCES Ingredientes (idIngredientes)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_Ingredientes_has_Produtos_Produtos1
-    FOREIGN KEY (Produtos_idProdutos)
-    REFERENCES Produtos (idProdutos)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
