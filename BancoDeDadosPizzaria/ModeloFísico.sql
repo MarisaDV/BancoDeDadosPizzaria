@@ -14,7 +14,7 @@ go
 -- -----------------------------------------------------
 -- Table Pizzaria.Login
 -- -----------------------------------------------------
-CREATE TABLE Login (
+CREATE TABLE Logins (
   idLogin INT NOT NULL,
   Usuario VARCHAR(45) NULL,
   Senha VARCHAR(20) NULL,
@@ -26,13 +26,13 @@ GO
 -- Table Pizzaria.Clientes
 -- -----------------------------------------------------
 CREATE TABLE Clientes (
-  idClientes INT NOT NULL PRIMARY KEY,
+  idCliente INT NOT NULL PRIMARY KEY,
   Endereco VARCHAR(200) NULL,
-  Login_idLogin INT NOT NULL,
+  idLogin INT NOT NULL,
   Telefone VARCHAR(18) NULL,
-  CONSTRAINT fk_Clientes_Login1
-    FOREIGN KEY (Login_idLogin)
-    REFERENCES Login (idLogin)
+  CONSTRAINT fk_Clientes_Logins
+    FOREIGN KEY (idLogin)
+    REFERENCES Logins (idLogin)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -41,7 +41,7 @@ GO
 -- -----------------------------------------------------
 -- Table Pizzaria.Cargo
 -- -----------------------------------------------------
-CREATE TABLE Cargo (
+CREATE TABLE Cargos (
   idCargo INT NOT NULL,
   Salario DECIMAL(6,2) NULL,
   NomeCargo VARCHAR(25) NULL,
@@ -60,11 +60,11 @@ CREATE TABLE Funcionarios (
   RG VARCHAR(10) NULL,
   NumCarteira VARCHAR(45) NULL,
   DataNascimento DATE NULL,
-  Cargo_idCargo INT NOT NULL,
+  idCargo INT NOT NULL,
   PRIMARY KEY (CPF),
-  CONSTRAINT fk_Funcionarios_Cargo1
-    FOREIGN KEY (Cargo_idCargo)
-    REFERENCES Cargo (idCargo)
+  CONSTRAINT fk_Funcionarios_Cargos
+    FOREIGN KEY (idCargo)
+    REFERENCES Cargos (idCargo)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -74,19 +74,19 @@ GO
 -- Table Pizzaria.Pedidos
 -- -----------------------------------------------------
 CREATE TABLE Pedidos (
-  idPedidos INT NOT NULL,
+  idPedido INT NOT NULL,
   data DATETIME NULL,
-  Clientes_idClientes INT NOT NULL,
-  Funcionarios_CPF VARCHAR(11) NOT NULL,
+  idCliente INT NOT NULL,
+  CPF VARCHAR(11) NOT NULL,
   Endereco VARCHAR(200) NULL,
-  PRIMARY KEY (idPedidos),
+  PRIMARY KEY (idPedido),
   CONSTRAINT fk_Pedidos_Clientes
-    FOREIGN KEY (Clientes_idClientes)
-    REFERENCES Clientes (idClientes)
+    FOREIGN KEY (idCliente)
+    REFERENCES Clientes (idCliente)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Pedidos_Funcionarios1
-    FOREIGN KEY (Funcionarios_CPF)
+  CONSTRAINT fk_Pedidos_Funcionarios
+    FOREIGN KEY (CPF)
     REFERENCES Funcionarios (CPF)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
@@ -99,11 +99,11 @@ GO
 CREATE TABLE Dependentes (
   idDependentes INT NOT NULL,
   Nome VARCHAR(45) NULL,
-  Clientes_idClientes INT NOT NULL,
+  idCliente INT NOT NULL,
   PRIMARY KEY (idDependentes),
-  CONSTRAINT fk_Dependentes_Clientes1
-    FOREIGN KEY (Clientes_idClientes)
-    REFERENCES Clientes (idClientes)
+  CONSTRAINT fk_Dependentes_Clientes
+    FOREIGN KEY (idCliente)
+    REFERENCES Clientes (idCliente)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -115,14 +115,14 @@ GO
 CREATE TABLE Produtos (
   idProduto INT NOT NULL,
   Nome VARCHAR(45) NULL,
-  PRIMARY KEY (idProdutos)
+  PRIMARY KEY (idProduto)
 )
 GO
 
 -- -----------------------------------------------------
 -- Table Pizzaria.Estoque
 -- -----------------------------------------------------
-CREATE TABLE Estoque (
+CREATE TABLE Estoques (
   idEstoque INT NOT NULL,
   Produto VARCHAR(45) NULL,
   Quantidade INT NULL,
@@ -139,22 +139,22 @@ CREATE TABLE Ingredientes (
 	idProduto INT NOT NULL,
 	idEstoque INT NOT NULL,
 	PRIMARY KEY (idProduto, idEstoque),
-	Qtd TINYINT NOT NULL,
+	Qtd DECIMAL(2,1) NOT NULL,
 	FOREIGN KEY (idProduto)
 		REFERENCES Produtos (idProduto)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION,
     FOREIGN KEY (idEstoque)
-		REFERENCES Estoque (idEstoque) 
+		REFERENCES Estoques (idEstoque) 
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 )
 GO
 
 -- -----------------------------------------------------
--- Table Pizzaria.Fornecedor
+-- Table Pizzaria.Fornecedores
 -- -----------------------------------------------------
-CREATE TABLE Fornecedor (
+CREATE TABLE Fornecedores (
   idFornecedor INT NOT NULL,
   Nome VARCHAR(45) NULL,
   CNPJ VARCHAR(25) NULL,
@@ -164,22 +164,20 @@ CREATE TABLE Fornecedor (
 )
 GO
 
-
-
 -- -----------------------------------------------------
 -- Table Pizzaria.Estoque_Fornecedor
 -- -----------------------------------------------------
-CREATE TABLE Estoque_Fornecedor (
-  Estoque_idEstoque INT NOT NULL,
-  Fornecedor_idFornecedor INT NOT NULL,
-  CONSTRAINT fk_Estoque_has_Fornecedor_Estoque1
-    FOREIGN KEY (Estoque_idEstoque)
-    REFERENCES Estoque (idEstoque)
+CREATE TABLE Estoques_Fornecedores (
+  idEstoque INT NOT NULL,
+  idFornecedor INT NOT NULL,
+  CONSTRAINT fk_Estoque_has_Fornecedor_Estoque
+    FOREIGN KEY (idEstoque)
+    REFERENCES Estoques (idEstoque)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Estoque_has_Fornecedor_Fornecedor1
-    FOREIGN KEY (Fornecedor_idFornecedor)
-    REFERENCES Fornecedor (idFornecedor)
+  CONSTRAINT fk_Estoque_has_Fornecedor_Fornecedor
+    FOREIGN KEY (idFornecedor)
+    REFERENCES Fornecedores (idFornecedor)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -189,16 +187,16 @@ GO
 -- Table Pizzaria.Produtos_Pedidos
 -- -----------------------------------------------------
 CREATE TABLE Produtos_Pedidos (
-  Produtos_idProdutos INT NOT NULL,
-  Pedidos_idPedidos INT NOT NULL,
-  CONSTRAINT fk_Produtos_has_Pedidos_Produtos1
-    FOREIGN KEY (Produtos_idProdutos)
-    REFERENCES Produtos (idProdutos)
+  idProduto INT NOT NULL,
+  idPedido INT NOT NULL,
+  CONSTRAINT fk_Produtos_has_Pedidos_Produtos
+    FOREIGN KEY (idProduto)
+    REFERENCES Produtos (idProduto)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Produtos_has_Pedidos_Pedidos1
-    FOREIGN KEY (Pedidos_idPedidos)
-    REFERENCES Pedidos (idPedidos)
+  CONSTRAINT fk_Produtos_has_Pedidos_Pedidos
+    FOREIGN KEY (idPedido)
+    REFERENCES Pedidos (idPedido)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -207,7 +205,7 @@ GO
 -- -----------------------------------------------------
 -- Table Pizzaria.Admissao
 -- -----------------------------------------------------
-CREATE TABLE Admissao (
+CREATE TABLE Admissoes (
   idAdmissao INT NOT NULL,
   DataAdmissao DATE NULL,
   DataDemissao DATE NULL,
@@ -218,17 +216,17 @@ GO
 -- -----------------------------------------------------
 -- Table Pizzaria.Funcionarios_Admissao
 -- -----------------------------------------------------
-CREATE TABLE Funcionarios_Admissao (
-  Funcionarios_CPF VARCHAR(11) NOT NULL,
-  Admissão_idAdmissão INT NOT NULL,
-  CONSTRAINT fk_Funcionarios_has_Admissão_Funcionarios1
-    FOREIGN KEY (Funcionarios_CPF)
+CREATE TABLE Funcionarios_Admissoes (
+  CPF VARCHAR(11) NOT NULL,
+  idAdmissão INT NOT NULL,
+  CONSTRAINT fk_Funcionarios_has_Admissão_Funcionarios
+    FOREIGN KEY (CPF)
     REFERENCES Funcionarios (CPF)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Funcionarios_has_Admissão_Admissão1
-    FOREIGN KEY (Admissão_idAdmissão)
-    REFERENCES Admissao (idAdmissao)
+  CONSTRAINT fk_Funcionarios_has_Admissão_Admissão
+    FOREIGN KEY (idAdmissão)
+    REFERENCES Admissoes (idAdmissao)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -237,14 +235,14 @@ GO
 -- -----------------------------------------------------
 -- Table Pizzaria.Log
 -- -----------------------------------------------------
-CREATE TABLE Log (
+CREATE TABLE Logs (
   idLog INT NOT NULL,
   DescAtividade VARCHAR(200) NULL,
   DataHora DATETIME NULL,
-  Funcionarios_CPF VARCHAR(11) NOT NULL,
+  CPF VARCHAR(11) NOT NULL,
   PRIMARY KEY (idLog),
-  CONSTRAINT fk_Log_Funcionarios1
-    FOREIGN KEY (Funcionarios_CPF)
+  CONSTRAINT fk_Log_Funcionarios
+    FOREIGN KEY (CPF)
     REFERENCES Funcionarios (CPF)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
