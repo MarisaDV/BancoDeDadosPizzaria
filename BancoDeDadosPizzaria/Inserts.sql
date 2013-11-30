@@ -1,14 +1,24 @@
-USE `Pizzaria` ;
+USE `Pizzaria`;
 
 INSERT INTO Login VALUES 
 	(1, 'Guilherme', 'egmdc321'),
 	(2, 'Matheus', 'egmdc321'),
-	(3, 'Victor', 'egmdc321');
+	(3, 'Victor', 'egmdc321'),
+	(4, 'Marcelo', 'egmdc321'),
+	(4, 'Pedro', 'egmdc321'),
+	(4, 'Joao', 'egmdc321');
 	
 INSERT INTO Clientes VALUES 
 	(1, 'Av Ministro Nelson Hungria, 280, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 1, '(12)3674-3689'), 
 	(2, 'Av Coronel Sebastião Marcondes da Silva, 149, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 1, '(12)3654-5709'), 
-	(3, 'Av do Povo, 280, Centro, Taubaté-SP - CEP 12440-123', 1, '(12)3644-5610');
+	(3, 'Rua Sao João, 455, Centro, São José de Campos-SP - CEP 12440-123', 1, '(12)3644-5610'),
+	(4, 'Rua Quinze De Novembro, 394, Centro, Taubaté-SP - CEP 12440-123', 1, '(12)3644-5160'),
+	(5, 'Rua Sao Sebastiao, 289, Centro, Tremembé-SP - CEP 12440-123', 0, '(12)3644-6510'),
+	(6, 'Rua Santos Dumont, 876, Centro, Ubatuba-SP - CEP 12440-123', 1, '(12)3644-1560'),
+	(7, 'Rua Belo Horizonte, 255, Centro, Londrina-PR - CEP 12440-123', 1, '(32)3644-5560'),
+	(8, 'Rua José Bonifácio, 580, Centro, Maringá-PR - CEP 12440-123', 0, '(32)3644-5660'),
+	(9, 'Rua Vinte e Três, 290, Centro, Barbosa-SP - CEP 12440-123', 1, '(12)3644-5980'),
+	(10, 'Rua Santa Rita, 276, Centro, Manaus-AM - CEP 12440-123', 0, '(98)3644-5130');
 
 INSERT INTO Cargo VALUES 
 	(1, 1500, 'Entregador'),
