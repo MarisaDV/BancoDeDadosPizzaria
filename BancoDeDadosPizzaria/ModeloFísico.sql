@@ -165,6 +165,12 @@ CREATE TABLE Dependentes (
 )
 GO
 
+INSERT INTO Dependentes VALUES 
+	(1, 'José da Silva', 1),
+	(2, 'Bertoldo Moraes', 2),
+	(3, 'Geovane Cardoso', 3)
+GO	
+
 -- -----------------------------------------------------
 -- Table Pizzaria.Produtos
 -- -----------------------------------------------------
