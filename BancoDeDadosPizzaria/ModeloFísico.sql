@@ -2,7 +2,7 @@ USE master
 GO
 
 IF EXISTS (select name from sys.databases where name = 'Pizzaria')
-	DROP DATABASE Pizzaria
+        DROP DATABASE Pizzaria
 go
 
 CREATE DATABASE Pizzaria
@@ -135,19 +135,17 @@ GO
 -- Table Pizzaria.Ingredientes
 -- -----------------------------------------------------
 CREATE TABLE Ingredientes (
-	idIngrediente INT NOT NULL,
-	idProduto INT NOT NULL,
-	idEstoque INT NOT NULL,
-	PRIMARY KEY (idProduto, idEstoque),
-	Qtd DECIMAL(2,1) NOT NULL,
-	FOREIGN KEY (idProduto)
-		REFERENCES Produtos (idProduto)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION,
+        idProduto INT NOT NULL,
+        idEstoque INT NOT NULL,
+        Qtd FLOAT NOT NULL,
+        FOREIGN KEY (idProduto)
+                REFERENCES Produtos (idProduto)
+                ON DELETE NO ACTION
+                ON UPDATE NO ACTION,
     FOREIGN KEY (idEstoque)
-		REFERENCES Estoques (idEstoque) 
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
+                REFERENCES Estoques (idEstoque) 
+                ON DELETE NO ACTION
+                ON UPDATE NO ACTION
 )
 GO
 
@@ -158,7 +156,7 @@ CREATE TABLE Fornecedores (
   idFornecedor INT NOT NULL,
   Nome VARCHAR(45) NULL,
   CNPJ VARCHAR(25) NULL,
-  Endereco VARCHAR(45) NULL,
+  Endereco VARCHAR(95) NULL,
   Telefone VARCHAR(18) NULL,
   PRIMARY KEY (idFornecedor)
 )
@@ -248,4 +246,3 @@ CREATE TABLE Logs (
     ON UPDATE NO ACTION
 )
 GO
-
