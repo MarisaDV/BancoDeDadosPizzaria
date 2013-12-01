@@ -40,7 +40,7 @@ GO
 CREATE TABLE Clientes (
   idCliente INT NOT NULL PRIMARY KEY,
   Endereco VARCHAR(200) NULL,
-  idLogin INT NOT NULL,
+  idLogin INT DEFAULT NULL,
   Telefone VARCHAR(18) NULL,
   CONSTRAINT fk_Clientes_Logins
     FOREIGN KEY (idLogin)
@@ -52,15 +52,15 @@ GO
 
 INSERT INTO Clientes VALUES 
         (1, 'Av Ministro Nelson Hungria, 280, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 1, '(12)3674-3689'), 
-        (2, 'Av Coronel Sebastião Marcondes da Silva, 149, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 1, '(12)3654-5709'), 
-        (3, 'Rua Sao João, 455, Centro, São José de Campos-SP - CEP 12440-123', 1, '(12)3644-5610'),
-        (4, 'Rua Quinze De Novembro, 394, Centro, Taubaté-SP - CEP 12440-123', 1, '(12)3644-5160'),
-        (5, 'Rua Sao Sebastiao, 289, Centro, Tremembé-SP - CEP 12440-123', 2, '(12)3644-6510'),
-        (6, 'Rua Santos Dumont, 876, Centro, Ubatuba-SP - CEP 12440-123', 1, '(12)3644-1560'),
-        (7, 'Rua Belo Horizonte, 255, Centro, Londrina-PR - CEP 12440-123', 1, '(32)3644-5560'),
-        (8, 'Rua José Bonifácio, 580, Centro, Maringá-PR - CEP 12440-123', 3, '(32)3644-5660'),
-        (9, 'Rua Vinte e Três, 290, Centro, Barbosa-SP - CEP 12440-123', 1, '(12)3644-5980'),
-        (10, 'Rua Santa Rita, 276, Centro, Manaus-AM - CEP 12440-123', 4, '(98)3644-5130');
+        (2, 'Av Coronel Sebastião Marcondes da Silva, 149, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 2, '(12)3654-5709'), 
+        (3, 'Rua Sao João, 455, Centro, São José de Campos-SP - CEP 12440-123', 3, '(12)3644-5610'),
+        (4, 'Rua Quinze De Novembro, 394, Centro, Taubaté-SP - CEP 12440-123', 4, '(12)3644-5160'),
+        (5, 'Rua Sao Sebastiao, 289, Centro, Tremembé-SP - CEP 12440-123', 5, '(12)3644-6510'),
+        (6, 'Rua Santos Dumont, 876, Centro, Ubatuba-SP - CEP 12440-123', 6, '(12)3644-1560'),
+        (7, 'Rua Belo Horizonte, 255, Centro, Londrina-PR - CEP 12440-123', NULL, '(32)3644-5560'),
+        (8, 'Rua José Bonifácio, 580, Centro, Maringá-PR - CEP 12440-123', NULL, '(32)3644-5660'),
+        (9, 'Rua Vinte e Três, 290, Centro, Barbosa-SP - CEP 12440-123', NULL, '(12)3644-5980'),
+        (10, 'Rua Santa Rita, 276, Centro, Manaus-AM - CEP 12440-123', NULL, '(98)3644-5130');
 GO
 
 -- -----------------------------------------------------
@@ -146,7 +146,12 @@ INSERT INTO Pedidos VALUES
 		(2, '30-11-2013', 2, '12332112362', 'Av Anahanguera, 820, Bairro das Flores'),
 		(3, '30-11-2013', 3, '12332112363', 'Rua São João, 520, Centro'),
 		(4, '30-11-2013', 4, '12332112362', 'Rua Nelson de Fátima, 400, Bairro Sertãozinho'),
-		(5, '29-11-2013', 5 , '12332112362', 'Rua Sebastião da Rosa, s/n, Bairro Matadouro')
+		(5, '29-11-2013', 5 , '12332112362', 'Rua Sebastião da Rosa, s/n, Bairro Matadouro'),
+		(6, '01-12-2013', 6, '12332112363', 'AV Andrômeda, 720, Centro.'),
+		(7, '30-11-2013', 7, '12332112362', 'Av Anahanguera, 820, Bairro das Flores'),
+		(8, '30-11-2013', 8, '12332112363', 'Rua São João, 520, Centro'),
+		(9, '30-11-2013', 9, '12332112362', 'Rua Nelson de Fátima, 400, Bairro Sertãozinho'),
+		(10, '29-11-2013', 10 , '12332112362', 'Rua Sebastião da Rosa, s/n, Bairro Matadouro')
 GO
 
 -- -----------------------------------------------------
@@ -382,11 +387,15 @@ GO
 
 INSERT INTO Produtos_Pedidos VALUES
 	(1, 1),
-	(2, 2),
-	(3, 2),
-	(4, 3),
-	(5, 4),
-	(6, 5)
+	(2, 1),
+	(3, 1),
+	(4, 2),
+	(5, 2),
+	(6, 4),
+	(7, 4),
+	(8, 3),
+	(9, 2),
+	(10, 3)
 GO	
 
 -- -----------------------------------------------------
