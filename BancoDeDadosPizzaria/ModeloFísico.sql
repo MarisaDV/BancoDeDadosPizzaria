@@ -39,6 +39,7 @@ GO
 -- -----------------------------------------------------
 CREATE TABLE Clientes (
   idCliente INT NOT NULL PRIMARY KEY,
+  Nome VARCHAR (200) NOT NULL,
   Endereco VARCHAR(200) NULL,
   idLogin INT DEFAULT NULL,
   Telefone VARCHAR(18) NULL,
@@ -51,16 +52,16 @@ CREATE TABLE Clientes (
 GO
 
 INSERT INTO Clientes VALUES 
-        (1, 'Av Ministro Nelson Hungria, 280, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 1, '(12)3674-3689'), 
-        (2, 'Av Coronel Sebastião Marcondes da Silva, 149, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 2, '(12)3654-5709'), 
-        (3, 'Rua Sao João, 455, Centro, São José de Campos-SP - CEP 12440-123', 3, '(12)3644-5610'),
-        (4, 'Rua Quinze De Novembro, 394, Centro, Taubaté-SP - CEP 12440-123', 4, '(12)3644-5160'),
-        (5, 'Rua Sao Sebastiao, 289, Centro, Tremembé-SP - CEP 12440-123', 5, '(12)3644-6510'),
-        (6, 'Rua Santos Dumont, 876, Centro, Ubatuba-SP - CEP 12440-123', 6, '(12)3644-1560'),
-        (7, 'Rua Belo Horizonte, 255, Centro, Londrina-PR - CEP 12440-123', NULL, '(32)3644-5560'),
-        (8, 'Rua José Bonifácio, 580, Centro, Maringá-PR - CEP 12440-123', NULL, '(32)3644-5660'),
-        (9, 'Rua Vinte e Três, 290, Centro, Barbosa-SP - CEP 12440-123', NULL, '(12)3644-5980'),
-        (10, 'Rua Santa Rita, 276, Centro, Manaus-AM - CEP 12440-123', NULL, '(98)3644-5130');
+        (1, 'Robervaldo', 'Av Ministro Nelson Hungria, 280, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 1, '(12)3674-3689'), 
+        (2, 'Valdomiro', 'Av Coronel Sebastião Marcondes da Silva, 149, Centro, Santo Antônio do Pinhal-SP - CEP 12450-000', 2, '(12)3654-5709'), 
+        (3, 'Cleidiane', 'Rua Sao João, 455, Centro, São José de Campos-SP - CEP 12440-123', 3, '(12)3644-5610'),
+        (4, 'Wanilda', 'Rua Quinze De Novembro, 394, Centro, Taubaté-SP - CEP 12440-123', 4, '(12)3644-5160'),
+        (5, 'Soleneusa', 'Rua Sao Sebastiao, 289, Centro, Tremembé-SP - CEP 12440-123', 5, '(12)3644-6510'),
+        (6, 'Godofredo', 'Rua Santos Dumont, 876, Centro, Ubatuba-SP - CEP 12440-123', 6, '(12)3644-1560'),
+        (7, 'Jaime', 'Rua Belo Horizonte, 255, Centro, Londrina-PR - CEP 12440-123', NULL, '(32)3644-5560'),
+        (8, 'Jean', 'Rua José Bonifácio, 580, Centro, Maringá-PR - CEP 12440-123', NULL, '(32)3644-5660'),
+        (9, 'Claudisney', 'Rua Vinte e Três, 290, Centro, Barbosa-SP - CEP 12440-123', NULL, '(12)3644-5980'),
+        (10, 'Fúlvio', 'Rua Santa Rita, 276, Centro, Manaus-AM - CEP 12440-123', NULL, '(98)3644-5130');
 GO
 
 -- -----------------------------------------------------
