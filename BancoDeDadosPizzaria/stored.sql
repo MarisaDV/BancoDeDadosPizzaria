@@ -31,21 +31,27 @@ AS
         INNER JOIN Pedidos P ON P.CPF = F.CPF
         INNER JOIN Produtos_Pedidos PP ON PP.idPedido = P.idPedido
         INNER JOIN Produtos Prod ON Prod.idProduto = PP.idProduto
-       -- WHERE F.Nome = @nome     
+        WHERE F.Nome = @nome     
+GO
+
+
+IF EXISTS (select name from sys.procedures where name = 'usp_pedidosRealizadosCliente')
+        DROP PROCEDURE usp_pedidosRealizadosCliente
 GO
 
 -- Pedidos do cliente  
 CREATE PROCEDURE usp_pedidosRealizadosCliente
 	@nome VARCHAR(45)
 AS
-	SELECT Cli.Nome,  as 'Cargo', Prod.Nome, CONVERT(VARCHAR(10),P.data, 103) As 'Data do Pedido'  FROM 
+	SELECT Cli.Nome,  Prod.Nome, CONVERT(VARCHAR(10),P.data, 103) As 'Data do Pedido'  FROM 
 		Clientes Cli
-        INNER JOIN Cargos C ON C.idCargo = F.idCargo
-        INNER JOIN Pedidos P ON P.CPF = F.CPF
+        INNER JOIN Pedidos P ON P.idCliente = Cli.idCliente
         INNER JOIN Produtos_Pedidos PP ON PP.idPedido = P.idPedido
         INNER JOIN Produtos Prod ON Prod.idProduto = PP.idProduto
-       -- WHERE F.Nome = @nome     
+        WHERE Cli.Nome = @nome     
 GO
 
-EXEC usp_pedidosRealizados 'Miguel de Souza'
+EXEC usp_pedidosRealizadosCliente 'Robervaldo'
+GO
+EXEC usp_pedidosRealizadosCliente 'Valdomiro'
 GO
