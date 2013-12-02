@@ -12,7 +12,7 @@
 %% This work has the LPPL maintenance status `maintained'.
 %% 
 %% The Current Maintainer of this work is the abnTeX2 team, led
-%% by Lauro CÈsar Araujo. Further information are available on 
+%% by Lauro C√©sar Araujo. Further information are available on 
 %% http://abntex2.googlecode.com/
 %%
 %% This work consists of the files abntex2-modelo-trabalho-academico.tex,
@@ -29,21 +29,21 @@
 % ------------------------------------------------------------------------
 
 \documentclass[
-	% -- opÁıes da classe memoir --
+	% -- op√ß√µes da classe memoir --
 	12pt,				% tamanho da fonte
-	openright,			% capÌtulos comeÁam em p·g Ìmpar (insere p·gina vazia caso preciso)
-	oneside,			% para impress„o em verso e anverso. Oposto a oneside
+	openright,			% cap√≠tulos come√ßam em p√°g √≠mpar (insere p√°gina vazia caso preciso)
+	oneside,			% para impress√£o em verso e anverso. Oposto a oneside
 	a4paper,			% tamanho do papel. 
-	% -- opÁıes da classe abntex2 --
-	chapter=TITLE,		% tÌtulos de capÌtulos convertidos em letras mai˙sculas
-	section=TITLE,		% tÌtulos de seÁıes convertidos em letras mai˙sculas
-	%subsection=TITLE,	% tÌtulos de subseÁıes convertidos em letras mai˙sculas
-	%subsubsection=TITLE,% tÌtulos de subsubseÁıes convertidos em letras mai˙sculas
-	% -- opÁıes do pacote babel --
-	english,			% idioma adicional para hifenizaÁ„o
-	%french,				% idioma adicional para hifenizaÁ„o
-	%spanish,			% idioma adicional para hifenizaÁ„o
-	brazil				% o ˙ltimo idioma È o principal do documento
+	% -- op√ß√µes da classe abntex2 --
+	chapter=TITLE,		% t√≠tulos de cap√≠tulos convertidos em letras mai√∫sculas
+	section=TITLE,		% t√≠tulos de se√ß√µes convertidos em letras mai√∫sculas
+	%subsection=TITLE,	% t√≠tulos de subse√ß√µes convertidos em letras mai√∫sculas
+	%subsubsection=TITLE,% t√≠tulos de subsubse√ß√µes convertidos em letras mai√∫sculas
+	% -- op√ß√µes do pacote babel --
+	english,			% idioma adicional para hifeniza√ß√£o
+	%french,				% idioma adicional para hifeniza√ß√£o
+	%spanish,			% idioma adicional para hifeniza√ß√£o
+	brazil				% o √∫ltimo idioma √© o principal do documento
 	]{abntex2}
 
 % ---
@@ -55,12 +55,12 @@
 % ---
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-% \usepackage[utf8]{inputenc}		% Codificacao do documento (convers„o autom·tica dos acentos)
-\usepackage{lastpage}			% Usado pela Ficha catalogr·fica
-\usepackage{indentfirst}		% Indenta o primeiro par·grafo de cada seÁ„o.
+%\usepackage[utf8]{inputenc}		% Codificacao do documento (convers√£o autom√°tica dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalogr√°fica
+\usepackage{indentfirst}		% Indenta o primeiro par√°grafo de cada se√ß√£o.
 \usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclus„o de gr·ficos
-\usepackage{microtype} 			% para melhorias de justificaÁ„o
+\usepackage{graphicx}			% Inclus√£o de gr√°ficos
+\usepackage{microtype} 			% para melhorias de justifica√ß√£o
 % ---
 
 \usepackage{listings}
@@ -69,16 +69,16 @@
 \usepackage[table]{xcolor} %
 		
 % ---
-% Pacotes adicionais, usados apenas no ‚mbito do Modelo CanÙnico do abnteX2
+% Pacotes adicionais, usados apenas no √¢mbito do Modelo Can√¥nico do abnteX2
 % ---
-\usepackage{lipsum}				% para geraÁ„o de dummy text
+\usepackage{lipsum}				% para gera√ß√£o de dummy text
 % ---
 
 % ---
-% Pacotes de citaÁıes
+% Pacotes de cita√ß√µes
 % ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citaÁıes na bibl
-\usepackage[alf]{abntex2cite}	% CitaÁıes padr„o ABNT
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as cita√ß√µes na bibl
+\usepackage[alf]{abntex2cite}	% Cita√ß√µes padr√£o ABNT
 
 \usepackage{tikz}
 \usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
@@ -114,51 +114,48 @@
 }
 
 % --- 
-% CONFIGURA«’ES DE PACOTES
+% CONFIGURA√á√ïES DE PACOTES
 % --- 
 
 % ---
-% ConfiguraÁıes do pacote backref
-% Usado sem a opÁ„o hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) p·gina(s):~}
-% Texto padr„o antes do n˙mero das p·ginas
+% Configura√ß√µes do pacote backref
+% Usado sem a op√ß√£o hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) p√°gina(s):~}
+% Texto padr√£o antes do n√∫mero das p√°ginas
 \renewcommand{\backref}{}
-% Define os textos da citaÁ„o
+% Define os textos da cita√ß√£o
 \renewcommand*{\backrefalt}[4]{
 	\ifcase #1 %
-		Nenhuma citaÁ„o no texto.%
+		Nenhuma cita√ß√£o no texto.%
 	\or
-		Citado na p·gina #2.%
+		Citado na p√°gina #2.%
 	\else
-		Citado #1 vezes nas p·ginas #2.%
+		Citado #1 vezes nas p√°ginas #2.%
 	\fi}%
 % ---
 
 % ---
-% InformaÁıes de dados para CAPA e FOLHA DE ROSTO
+% Informa√ß√µes de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{\textsc{Modelo de banco de dados pizzaria: modelagem e implementaÁ„o}}
+\titulo{\textsc{Modelo de Banco de Dados para Gerenciamento de Pizzaria: Modelagem e Implementa√ß√£o}}
 \autor{Guilherme Augusto de Macedo \and Matheus Liberato Domingues da Silva \and Victor Hugo Carlquist da Silva}
-\local{Campos do Jord„o}
+\local{Campos do Jord√£o}
 \data{2013}
 \orientador{Paulo Giovani de Faria Zeferino}
 % \coorientador{Equipe \abnTeX}
-\instituicao{%
-  Instituto Federal de EducaÁ„o, CiÍncia e Tecnologia de S„o Paulo - \textit{campus} Campos do Jord„o}
+\instituicao{Instituto Federal de Educa√ß√£o, Ci√™ncia e Tecnologia de S√£o Paulo - \textit{campus} Campos do Jord√£o}
 \tipotrabalho{Trabalho Final}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
-% o nome da instituiÁ„o e a ·rea de concentraÁ„o 
-\preambulo{Trabalho final apresentado na disciplina de Banco de Dados II no quarto mÛdulo do curso de Tecnologia em An·lise e Desenvolvimento de Sistemas do IFSP-CJO.}
-% ---
+% o nome da institui√ß√£o e a √°rea de concentra√ß√£o 
+\preambulo{Trabalho final apresentado na disciplina de Banco de Dados II no quarto m√≥dulo do curso de Tecnologia em An√°lise e Desenvolvimento de Sistemas do IFSP-CJO.}
 
 
-% ---
-% ConfiguraÁıes de aparÍncia do PDF final
+% Configura√ß√µes de apar√™ncia do PDF final
 
 % alterando o aspecto da cor azul
 \definecolor{blue}{RGB}{41,5,195}
 
-% informaÁıes do PDF
+% informa√ß√µes do PDF
 \makeatletter
 \hypersetup{
      	%pagebackref=true,
@@ -166,11 +163,11 @@
 		pdfauthor={\@author},
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadÍmico}, 
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acad√™mico}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
+    	filecolor=magenta,      	% color of file links
 		urlcolor=blue,
 		bookmarksdepth=4
 }
@@ -178,14 +175,14 @@
 % --- 
 
 % --- 
-% EspaÁamentos entre linhas e par·grafos 
+% Espa√ßamentos entre linhas e par√°grafos 
 % --- 
 
-% O tamanho do par·grafo È dado por:
+% O tamanho do par√°grafo √© dado por:
 \setlength{\parindent}{1.3cm}
 
-% Controle do espaÁamento entre um par·grafo e outro:
-\setlength{\parskip}{0.2cm}  % tente tambÈm \onelineskip
+% Controle do espa√ßamento entre um par√°grafo e outro:
+\setlength{\parskip}{0.2cm}  % tente tamb√©m \onelineskip
 
 % ---
 % compila o indice
@@ -194,15 +191,15 @@
 % ---
 
 % ----
-% InÌcio do documento
+% In√≠cio do documento
 % ----
 \begin{document}
 
-% Retira espaÁo extra obsoleto entre as frases.
+% Retira espa√ßo extra obsoleto entre as frases.
 \frenchspacing 
 
 % ----------------------------------------------------------
-% ELEMENTOS PR…-TEXTUAIS
+% ELEMENTOS PR√â-TEXTUAIS
 % ----------------------------------------------------------
 % \pretextual
 
@@ -214,7 +211,7 @@
 
 % ---
 % Folha de rosto
-% (o * indica que haver· a ficha bibliogr·fica)
+% (o * indica que haver√° a ficha bibliogr√°fica)
 % ---
 \imprimirfolhaderosto*
 % ---
@@ -223,18 +220,18 @@
 % Inserir a ficha bibliografica
 % ---
 
-% Isto È um exemplo de Ficha Catalogr·fica, ou ``Dados internacionais de
-% catalogaÁ„o-na-publicaÁ„o''. VocÍ pode utilizar este modelo como referÍncia. 
-% PorÈm, provavelmente a biblioteca da sua universidade lhe fornecer· um PDF
-% com a ficha catalogr·fica definitiva apÛs a defesa do trabalho. Quando estiver
-% com o documento, salve-o como PDF no diretÛrio do seu projeto e substitua todo
-% o conte˙do de implementaÁ„o deste arquivo pelo comando abaixo:
+% Isto √© um exemplo de Ficha Catalogr√°fica, ou ``Dados internacionais de
+% cataloga√ß√£o-na-publica√ß√£o''. Voc√™ pode utilizar este modelo como refer√™ncia. 
+% Por√©m, provavelmente a biblioteca da sua universidade lhe fornecer√° um PDF
+% com a ficha catalogr√°fica definitiva ap√≥s a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diret√≥rio do seu projeto e substitua todo
+% o conte√∫do de implementa√ß√£o deste arquivo pelo comando abaixo:
 %
 % \begin{fichacatalografica}
 %     \includepdf{fig_ficha_catalografica.pdf}
 % \end{fichacatalografica}
 \begin{fichacatalografica}
-	\vspace*{\fill}					% PosiÁ„o vertical
+	\vspace*{\fill}					% Posi√ß√£o vertical
 	\hrule							% Linha horizontal
 	\begin{center}					% Minipage Centralizado
 	\begin{minipage}[c]{12.5cm}		% Largura
@@ -256,10 +253,10 @@
 		1. Complexidade de Algoritmo.
 		2. Processamento de Imagens.
 		I. Autor.
-		II. TÌtulo
+		II. T√≠tulo
 		III. Orientador.
 		IV. Faculdade.
-		V. TÌtulo\\ 			
+		V. T√≠tulo\\ 			
 	
 	\hspace{8.75cm} CDU 02:141:005.7\\
 	
@@ -271,13 +268,13 @@
 
 
 % ---
-% Inserir folha de aprovaÁ„o
+% Inserir folha de aprova√ß√£o
 % ---
 
-% Isto È um exemplo de Folha de aprovaÁ„o, elemento obrigatÛrio da NBR
-% 14724/2011 (seÁ„o 4.2.1.3). VocÍ pode utilizar este modelo atÈ a aprovaÁ„o
-% do trabalho. ApÛs isso, substitua todo o conte˙do deste arquivo por uma
-% imagem da p·gina assinada pela banca com o comando abaixo:
+% Isto √© um exemplo de Folha de aprova√ß√£o, elemento obrigat√≥rio da NBR
+% 14724/2011 (se√ß√£o 4.2.1.3). Voc√™ pode utilizar este modelo at√© a aprova√ß√£o
+% do trabalho. Ap√≥s isso, substitua todo o conte√∫do deste arquivo por uma
+% imagem da p√°gina assinada pela banca com o comando abaixo:
 %
 % \includepdf{folhadeaprovacao_final.pdf}
 %
@@ -326,8 +323,8 @@
 % RESUMOS
 % ----------------------------------------------------------
 
-% resumo em portuguÍs
-\setlength{\absparsep}{18pt} % ajusta o espaÁamento dos par·grafos do resumo
+% resumo em portugu√™s
+\setlength{\absparsep}{18pt} % ajusta o espa√ßamento dos par√°grafos do resumo
 \begin{resumo}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -346,10 +343,10 @@
 	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
- \textbf{Palavras-chaves}: Complexidade de Algoritmos. Processamento de Imagens. ComputaÁ„o HeterogÍnea.
+ \textbf{Palavras-chaves}: Complexidade de Algoritmos. Processamento de Imagens. Computa√ß√£o Heterog√™nea.
 \end{resumo}
 
-% resumo em inglÍs
+% resumo em ingl√™s
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -376,7 +373,7 @@
 \end{resumo}
 
 % ---
-% inserir lista de ilustraÁıes
+% inserir lista de ilustra√ß√µes
 % ---
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
@@ -404,12 +401,12 @@
 % ---
 
 % ---
-% inserir lista de sÌmbolos
+% inserir lista de s√≠mbolos
 % ---
 % \begin{simbolos}
 %   \item[$ \Gamma $] Letra grega Gama
 %   \item[$ \Lambda $] Lambda
-%   \item[$ \zeta $] Letra grega min˙scula zeta
+%   \item[$ \zeta $] Letra grega min√∫scula zeta
 %   \item[$ \in $] Pertence
 % \end{simbolos}
 % ---
@@ -427,111 +424,301 @@
 % ----------------------------------------------------------
 \textual
 
-\chapter*[IntroduÁ„o]{IntroduÁ„o}
-\addcontentsline{toc}{chapter}{IntroduÁ„o}
+% ----------------------------------------------------------
+% Intrudu√ß√£o
+% ----------------------------------------------------------
+\chapter*[Introdu√ß√£o]{Introdu√ß√£o}
+\addcontentsline{toc}{chapter}{Introdu√ß√£o}
+    O projeto proposto tem por objetivo a modelagem conceitual, l√≥gica e f√≠sica de um projeto de Banco de Dados
+    para gerenciamento/automatiza√ß√£o de uma pizzaria. A modelagem foi realizada tomando por base os seguintes 
+    requisitos:
+    \begin {enumerate}
+        \item Op√ß√£o de realiza√ß√£o de pedidos online;
+        \item Pizzaria delivery;
+        \item Ap√≥s cadastro, op√ß√£o do cliente cadastrar dependentes;
+        \item Registro de admiss√£o e demiss√£o de funcion√°rios;
+        \item Log autom√°tico das atividades dos funcion√°rios;
+        \item Controle de estoque com base nos fornecedores e nos ingredientes das pizzas;
+        \item Esquema de backup autom√°tico da base de dados.
+    \end {enumerate}
 
-
-
-% ROTEIRO DO DOCUMENTO
+    Depois de gerado o modelo f√≠sico, implementou-se a solu√ß√£o utilizando o \textit{SQL Server Management Studio}. 
+    Com base nessa implementa√ß√£o, consultas, \textit{views}, \textit{triggers}, entre outras rotinas, foram criadas para 
+    fins de execu√ß√£o e testes.
+    
+    Os cap√≠tulos seguintes est√£o divididos em Metodologia Proposta, onde √© detalhada a metodologia utilizada para a 
+    execu√ß√£o o projeto, seguidos de explica√ß√µes a respeito do modelo conceitual, l√≥gico e f√≠sico. Posteriormente, 
+    as consultas realizadas s√£o explicadas, assim como o restante das rotinas elaboradas.
 
 % ----------------------------------------------------------
-% PARTE - preparaÁ„o da pesquisa
+% Metodologia Proposta
 % ----------------------------------------------------------
-% \part{PreparaÁ„o da pesquisa}
+\chapter{Metodologia Proposta}
 
-% ----------------------------------------------------------
-% Capitulo com exemplos de comandos inseridos de arquivo externo 
-% ----------------------------------------------------------
-
-% ----------------------------------------------------------
-% Parte de revis„o de literatura
-% ----------------------------------------------------------
-% \part{Referenciais teÛricos}
-
-% ---
-% Capitulo de revis„o de literatura
-% ---
-\chapter{Metodologia Prosposta}
-
-Para a execuÁ„o dessa trabalho a metodologia foi dividida nas seguintes 
-etapas: \emph{CriaÁ„o do modelo conceitual}, \emph{CriaÁ„o do modelo lÛgico}, 
-\emph{CriaÁ„o do modelo fÌsico}, \emph{ImplementaÁ„o} e \emph{ExecuÁ„o e Testes}. 
-A figura \ref{figuramet} ilustra a sequÍncia de execuÁ„o destas etapas.
+Para a execu√ß√£o dessa trabalho a metodologia foi dividida em tr√™s 
+etapas: \emph{Cria√ß√£o do modelo conceitual}, \emph{Cria√ß√£o do modelo l√≥gico}, 
+\emph{Cria√ß√£o do modelo f√≠sico}, \emph{Implementa√ß√£o} e \emph{Execu√ß√£o e Testes}. 
+A figura \ref{figuramet} ilustra a sequ√™ncia de execu√ß√£o destas etapas.
 
 \begin{figure}[h]
-\caption{Epatas da metodologia}
-\centering
+    \caption{Epatas da metodologia}
+    \centering
 
-\begin{tikzpicture}
-  [node distance=.8cm,
-  start chain=going below,]
-     \node[punktchain, join] (etapa1) {CriaÁ„o do modelo conceitual};
-     \node[punktchain, join] (etapa2) {CriaÁ„o do modelo lÛgico};
-     \node[punktchain, join] (etapa3) {CriaÁ„o do modelo fÌsico};
-     \node[punktchain, join] (etapa4) {ImplementaÁ„o};
-     \node[punktchain, join] (etapa5) {ExecuÁ„o e Testes};
-\end{tikzpicture}
+    \begin{tikzpicture}
+      [node distance=.8cm, start chain=going below,]
+         \node[punktchain, join] (etapa1) {Cria√ß√£o do modelo conceitual};
+         \node[punktchain, join] (etapa2) {Cria√ß√£o do modelo l√≥gico};
+         \node[punktchain, join] (etapa3) {Cria√ß√£o do modelo f√≠sico};
+         \node[punktchain, join] (etapa4) {Implementa√ß√£o};
+         \node[punktchain, join] (etapa5) {Execu√ß√£o e Testes};
+    \end{tikzpicture}
 
-\legend{Fonte: Autor}
-\label{figuramet}
+    \legend{Fonte: Autor}
+    \label{figuramet}
 \end{figure}
 
+% ----------------------------------------------------------
+% Regras de Neg√≥cio
+% ----------------------------------------------------------
+
+
+% ----------------------------------------------------------
+% Modelo Conceitual
+% ----------------------------------------------------------
 \chapter{Modelo Conceitual}
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_01}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_02}
+         \caption{ }
+         \label{}
+    \end{figure}
 
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_03}
+         \caption{ }
+         \label{}
+    \end{figure}
 
-\chapter{Modelo LÛgico}
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio,angle=90]{../BancoDeDadosPizzaria/Imgs/MC_00}
+         \caption{ }
+         \label{}
+    \end{figure}    
 
+% ----------------------------------------------------------
+% Modelo L√≥gico
+% ----------------------------------------------------------
+\chapter{Modelo L√≥gico}
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_01}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_02}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_03}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/ML_00}
+         \caption{ }
+         \label{}
+    \end{figure}
 
-\chapter{Modelo FÌsico}
+    
+% ----------------------------------------------------------
+% Implementa√ß√£o
+% ----------------------------------------------------------
+\chapter{Implementa√ß√£o}
+    O banco de dados foi implementado utilizando o \textit{software SQL Server 2010}.
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/ModeloF√≠sico.sql}
 
+% ----------------------------------------------------------
+% Execu√ß√£o e Testes
+% ----------------------------------------------------------
+\chapter {Execu√ß√£o e Testes}
+    As execu√ß√µes e os testes foram feitos utilizando o \textit{software SQL Server Management Studio 2010}.
+    
+\section{Consultas}
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_001.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_001}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_002.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_002}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_003.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_003}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    %Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_004.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_004}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_005.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_005}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_006.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_006}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
 
-\chapter{ImplementaÁ„o}
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_007.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_007}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}    
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_008.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/Select_008}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+       
+\section{Procedimentos armazenados}
 
-\chapter{ExecuÁ„o e Testes}
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_001.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/USP_001}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_002.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/USP_002}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_003.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/USP_003}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
 
 % ---
 % Finaliza a parte no bookmark do PDF
 % para que se inicie o bookmark na raiz
-% e adiciona espaÁo de parte no Sum·rio
+% e adiciona espa√ßo de parte no Sum√°rio
 % ---
 \phantompart
 
 % ---
-% Conclus„o
+% Conclus√£o
 % ---
-\chapter*[ConsideraÁıes]{ConsideraÁıes Finais}
-\addcontentsline{toc}{chapter}{ConsideraÁıes Finais}
+\chapter*[Considera√ß√µes]{Considera√ß√µes Finais}
+\addcontentsline{toc}{chapter}{Considera√ß√µes Finais}
 
+Apesar de parecer simples, criar um banco de dados para uma pizzaria mostrou-se 
+uma tarefa cheia de detalhes a se pensar. Ao ser implementado, tornou-se 
+funcional, sendo poss√≠vel utiliz√°-lo em um ambiente real.
 
 % ----------------------------------------------------------
-% ELEMENTOS P”S-TEXTUAIS
+% ELEMENTOS P√ìS-TEXTUAIS
 % ----------------------------------------------------------
 \postextual
 
 % ----------------------------------------------------------
-% ReferÍncias bibliogr·ficas
+% Refer√™ncias bibliogr√°ficas
 % ----------------------------------------------------------
 % \bibliography{abntex2-modelo-references}
 \bibliography{ref}
 
 % ----------------------------------------------------------
-% Gloss·rio
+% Gloss√°rio
 % ----------------------------------------------------------
 %
-% Consulte o manual da classe abntex2 para orientaÁıes sobre o gloss·rio.
+% Consulte o manual da classe abntex2 para orienta√ß√µes sobre o gloss√°rio.
 %
 %\glossary
 
 % ----------------------------------------------------------
-% ApÍndices
+% Ap√™ndices
 % ----------------------------------------------------------
 
 % ---
-% Inicia os apÍndices
+% Inicia os ap√™ndices
 % ---
 % \begin{apendicesenv}
 
-% % Imprime uma p·gina indicando o inÌcio dos apÍndices
+% % Imprime uma p√°gina indicando o in√≠cio dos ap√™ndices
 % \partapendices
 
 % % ----------------------------------------------------------
@@ -557,30 +744,19 @@ A figura \ref{figuramet} ilustra a sequÍncia de execuÁ„o destas etapas.
 % ---
 % Inicia os anexos
 % ---
-% \begin{anexosenv}
+\begin{anexosenv}
 
-% % Imprime uma p·gina indicando o inÌcio dos anexos
-% \partanexos
-
-% % ---
-% \chapter{Morbi ultrices rutrum lorem.}
-% % ---
-% \lipsum[30]
+% % Imprime uma p√°gina indicando o in√≠cio dos anexos
+\partanexos
 
 % % ---
-% \chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-% parturient montes nascetur ridiculus mus}
+\chapter{Dados inseridos para teste}
 % % ---
+\lipsum[30]
 
-% \lipsum[31]
+\lstinputlisting{../BancoDeDadosPizzaria/Sql/Inserts.sql}
 
-% % ---
-% \chapter{Fusce facilisis lacinia dui}
-% % ---
-
-% \lipsum[32]
-
-% \end{anexosenv}
+\end{anexosenv}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
