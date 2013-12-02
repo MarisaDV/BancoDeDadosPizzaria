@@ -143,6 +143,7 @@ CREATE TABLE Pedidos (
 GO
 
 INSERT INTO Pedidos VALUES 
+<<<<<<< HEAD
 		(1, '01-12-2013', 1, '12332112363', 'AV Andrômeda, 720, Centro.'),
 		(2, '30-11-2013', 2, '12332112362', 'Av Anahanguera, 820, Bairro das Flores'),
 		(3, '30-11-2013', 3, '12332112363', 'Rua São João, 520, Centro'),
@@ -153,6 +154,18 @@ INSERT INTO Pedidos VALUES
 		(8, '30-11-2013', 8, '12332112363', 'Rua São João, 520, Centro'),
 		(9, '30-11-2013', 9, '12332112362', 'Rua Nelson de Fátima, 400, Bairro Sertãozinho'),
 		(10, '29-11-2013', 10 , '12332112362', 'Rua Sebastião da Rosa, s/n, Bairro Matadouro')
+=======
+                (1, '01-12-2013', 1, '12332112363', 'AV Andrômeda, 720, Centro.'),
+                (2, '30-11-2013', 2, '12332112362', 'Av Anahanguera, 820, Bairro das Flores'),
+                (3, '30-11-2013', 3, '12332112363', 'Rua São João, 520, Centro'),
+                (4, '30-11-2013', 4, '12332112362', 'Rua Nelson de Fátima, 400, Bairro Sertãozinho'),
+                (5, '29-11-2013', 5 , '12332112362', 'Rua Sebastião da Rosa, s/n, Bairro Matadouro'),
+                (6, '01-12-2013', 6, '12332112363', 'AV Andrômeda, 720, Centro.'),
+                (7, '30-11-2013', 7, '12332112362', 'Av Anahanguera, 820, Bairro das Flores'),
+                (8, '30-11-2013', 8, '12332112363', 'Rua São João, 520, Centro'),
+                (9, '30-11-2013', 9, '12332112362', 'Rua Nelson de Fátima, 400, Bairro Sertãozinho'),
+                (10, '29-11-2013', 10 , '12332112362', 'Rua Sebastião da Rosa, s/n, Bairro Matadouro')
+>>>>>>> b9476473bfec19c167fa49c211a677b35fac91c8
 GO
 
 -- -----------------------------------------------------
@@ -172,10 +185,17 @@ CREATE TABLE Dependentes (
 GO
 
 INSERT INTO Dependentes VALUES 
+<<<<<<< HEAD
 	(1, 'José da Silva', 1),
 	(2, 'Bertoldo Moraes', 2),
 	(3, 'Geovane Cardoso', 3)
 GO	
+=======
+        (1, 'José da Silva', 1),
+        (2, 'Bertoldo Moraes', 2),
+        (3, 'Geovane Cardoso', 3)
+GO        
+>>>>>>> b9476473bfec19c167fa49c211a677b35fac91c8
 
 -- -----------------------------------------------------
 -- Table Pizzaria.Produtos
@@ -238,6 +258,7 @@ INSERT INTO Estoques VALUES
 -- Table Pizzaria.Ingredientes
 -- -----------------------------------------------------
 CREATE TABLE Ingredientes (
+<<<<<<< HEAD
 	idProduto INT NOT NULL,
 	idEstoque INT NOT NULL,
 	Qtd FLOAT NOT NULL,
@@ -249,6 +270,19 @@ CREATE TABLE Ingredientes (
 			REFERENCES Estoques (idEstoque) 
 			ON DELETE NO ACTION
 			ON UPDATE NO ACTION
+=======
+        idProduto INT NOT NULL,
+        idEstoque INT NOT NULL,
+        Qtd FLOAT NOT NULL,
+        FOREIGN KEY (idProduto)
+                        REFERENCES Produtos (idProduto)
+                        ON DELETE NO ACTION
+                        ON UPDATE NO ACTION,
+        FOREIGN KEY (idEstoque)
+                        REFERENCES Estoques (idEstoque) 
+                        ON DELETE NO ACTION
+                        ON UPDATE NO ACTION
+>>>>>>> b9476473bfec19c167fa49c211a677b35fac91c8
 )
 GO
 
@@ -387,6 +421,7 @@ CREATE TABLE Produtos_Pedidos (
 GO
 
 INSERT INTO Produtos_Pedidos VALUES
+<<<<<<< HEAD
 	(1, 1),
 	(2, 1),
 	(3, 1),
@@ -398,6 +433,19 @@ INSERT INTO Produtos_Pedidos VALUES
 	(9, 2),
 	(10, 3)
 GO	
+=======
+        (1, 1),
+        (2, 1),
+        (3, 1),
+        (4, 2),
+        (5, 2),
+        (6, 4),
+        (7, 4),
+        (8, 3),
+        (9, 2),
+        (10, 3)
+GO        
+>>>>>>> b9476473bfec19c167fa49c211a677b35fac91c8
 
 -- -----------------------------------------------------
 -- Table Pizzaria.Admissao
@@ -411,6 +459,7 @@ CREATE TABLE Admissoes (
 GO
 
 INSERT INTO Admissoes VALUES 
+<<<<<<< HEAD
 	(1, '30-08-2005', ''),
 	(2, '28-04-2007', '11-07-2007'),
 	(3, '30-06-2009', ''),
@@ -421,6 +470,18 @@ INSERT INTO Admissoes VALUES
 	(8, '01-10-2011', ''),
 	(9, '30-11-2011', ''),
 	(10, '01-04-2012', '')
+=======
+        (1, '30-08-2005', ''),
+        (2, '28-04-2007', '11-07-2007'),
+        (3, '30-06-2009', ''),
+        (4, '14-10-2009', ''),
+        (5, '15-08-2010', ''),
+        (6, '25-08-2010', ''),
+        (7, '30-09-2011', ''),
+        (8, '01-10-2011', ''),
+        (9, '30-11-2011', ''),
+        (10, '01-04-2012', '')
+>>>>>>> b9476473bfec19c167fa49c211a677b35fac91c8
 GO
 
 SELECT * FROM Admissoes
@@ -446,6 +507,7 @@ CREATE TABLE Funcionarios_Admissoes (
 GO
 
 INSERT INTO Funcionarios_Admissoes VALUES 
+<<<<<<< HEAD
 	('12332112360', 1), 
 	('12332112361', 2), 
 	('12332112362', 3), 
@@ -457,6 +519,19 @@ INSERT INTO Funcionarios_Admissoes VALUES
 	('12332112368', 9), 
 	('12332112369', 10)
 GO	
+=======
+        ('12332112360', 1), 
+        ('12332112361', 2), 
+        ('12332112362', 3), 
+        ('12332112363', 4), 
+        ('12332112364', 5), 
+        ('12332112365', 6), 
+        ('12332112366', 7), 
+        ('12332112367', 8), 
+        ('12332112368', 9), 
+        ('12332112369', 10)
+GO        
+>>>>>>> b9476473bfec19c167fa49c211a677b35fac91c8
 
 SELECT * FROM Funcionarios_Admissoes
 GO
