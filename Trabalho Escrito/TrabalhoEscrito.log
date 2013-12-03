@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2013.11.12)  3 DEC 2013 16:45
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2013.11.12)  3 DEC 2013 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1274,11 +1274,6 @@ File: Imgs/ML_03.png Graphic file (type QTm)
 <use  "Imgs/ML_03.png" > [17]
 File: Imgs/ML_00.png Graphic file (type QTm)
  <use  "Imgs/ML_00.png" >
-Overfull \hbox (71.00623pt too wide) in paragraph at lines 534--535
- [][] 
- []
-
-
 Underfull \hbox (badness 1389) in paragraph at lines 555--555
 []|\T1/lmr/m/n/12 PK do re-gis-tro
  []
@@ -1482,12 +1477,12 @@ LaTeX Warning: Reference `usp_003p2' on page 39 undefined on input line 1390.
 File: Imgs/USP_003p1.jpg Graphic file (type QTm)
 <use  "Imgs/USP_003p1.jpg" >
 File: Imgs/USP_003p2.jpg Graphic file (type QTm)
- <use  "Imgs/USP_003p2.jpg" >
+ <use  "Imgs/USP_003p2.jpg" > [39]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 1411.
- (../sql/Triggers.sql
-[39] [40] [41] [42]) (../sql/Backup.sql) [43] [44] (./TrabalhoEscrito.bbl
-(./TrabalhoEscrito.brf)
+
+(../sql/Triggers.sql [40] [41] [42]) (../sql/Backup.sql [43]) [44]
+(./TrabalhoEscrito.bbl (./TrabalhoEscrito.brf)
 \tf@brf=\write6
 \openout6 = `TrabalhoEscrito.brf'.
 
@@ -1531,18 +1526,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1512.
  ) 
 Here is how much of TeX's memory you used:
  27907 strings out of 495654
  491217 string characters out of 6187555
- 886791 words of memory out of 5000000
+ 900801 words of memory out of 5000000
  30584 multiletter control sequences out of 15000+600000
  76557 words of font info for 55 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 61i,13n,61p,476b,1931s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,13n,61p,476b,1945s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on TrabalhoEscrito.pdf (55 pages).
