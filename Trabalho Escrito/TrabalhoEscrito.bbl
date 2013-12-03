@@ -20,4 +20,11 @@ Dispon{\'\i}vel em:
   \htmladdnormallink{$<$http:\-/\-/www\-.mysql\-.com\-/products\-/workbench\-/$>$}{http://www.mysql.com/products/workbench/}.
   Acesso em: 03 dez. 2013.}
 
+\bibitem[SQL Server 2008 R2 2013]{sqlserver}
+\abntrefinfo{SQL\ldots}{SQL\ldots}{2013}
+{SQL Server 2008 R2. 2013.
+Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/msdn\-.microsoft\-.com\-/en-us\-/library\-/ff928358(v=sql\-.10)\-.aspx$>$}{http://msdn.microsoft.com/en-us/library/ff928358(v=sql.10).aspx}.
+  Acesso em: 03 dez. 2013.}
+
 \end{thebibliography}
