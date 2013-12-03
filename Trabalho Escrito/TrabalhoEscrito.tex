@@ -1,24 +1,3 @@
-%% abtex2-modelo-trabalho-academico.tex, v-1.9 laurocesar
-%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
-%%
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%   http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2005/12/01 or later.
-%%
-%% This work has the LPPL maintenance status `maintained'.
-%% 
-%% The Current Maintainer of this work is the abnTeX2 team, led
-%% by Lauro César Araujo. Further information are available on 
-%% http://abntex2.googlecode.com/
-%%
-%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
-%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
-%%
-
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 % abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
@@ -247,52 +226,6 @@
 % Inserir a ficha bibliografica
 % ---
 
-% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
-% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
-% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
-% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
-% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
-% o conteúdo de implementação deste arquivo pelo comando abaixo:
-%
-% \begin{fichacatalografica}
-%     \includepdf{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
-\begin{fichacatalografica}
-	\vspace*{\fill}					% Posição vertical
-	\hrule							% Linha horizontal
-	\begin{center}					% Minipage Centralizado
-	\begin{minipage}[c]{12.5cm}		% Largura
-	
-	\imprimirautor
-	
-	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-	\imprimirlocal, \imprimirdata-
-	
-	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-	
-	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
-	
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
-	\imprimirdata.}\\
-	
-	\hspace{0.5cm}
-		1. Complexidade de Algoritmo.
-		2. Processamento de Imagens.
-		I. Autor.
-		II. Título
-		III. Orientador.
-		IV. Faculdade.
-		V. Título\\ 			
-	
-	\hspace{8.75cm} CDU 02:141:005.7\\
-	
-	\end{minipage}
-	\end{center}
-	\hrule
-\end{fichacatalografica}
-% ---
-
 
 % ---
 % Inserir folha de aprovação
@@ -330,8 +263,8 @@
    \end{center}
 
    \assinatura{\textbf{Prof. \imprimirorientador} \\ Orientador} 
-   \assinatura{\textbf{Prof. Me. Alvaro Costa Neto} \\ Convidado 1}
-   \assinatura{\textbf{Prof. Esp. Alisson Ribeiro} \\ Convidado 2}
+   \assinatura{\textbf{Prof. Convidado 1} \\ Convidado 1}
+   \assinatura{\textbf{Prof. Convidado 2} \\ Convidado 2}
    %\assinatura{\textbf{Professor} \\ Convidado 3}
    %\assinatura{\textbf{Professor} \\ Convidado 4}
       
@@ -353,49 +286,37 @@
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
- \textbf{Palavras-chaves}: Complexidade de Algoritmos. Processamento de Imagens. Computação Heterogênea.
+    Este trabalho tem como objetivo a criação de um projeto de banco de dados 
+    para gerenciar uma pizzaria. Seguindo algumas regras de negócio, foi elaborado 
+    um modelo conceitual, um modelo lógico e um modelo físico. Depois de implementado, 
+    o banco de dados foi alimentado com valores para teste. Esses valores de teste 
+    são a base para as consultas, visões, procedimentos armazenados e para os gatilhos.
+    As ferramentas utilizadas para a construção do banco de dados foram: \textit{br-Modelo} 
+    para o modelo conceitual, \textit{Mysql Workbench} para a modelagem lógica, e o 
+    \textit{SQL Server} em conjunto com o \textit{SQL Server Management Studio} para a 
+    implementação do modelo físico.
+    
+    \noindent
+    
+    \textbf{Palavras-chaves}: Banco de Dados. Modelagem Lógica. Modelagem Conceitual.
 \end{resumo}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
-   	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    This work aims at creating a project database
+    to manage a pizzeria. Following a few rules of business, was prepared
+    a conceptual model, logical model and a physical model. Once deployed,
+    the database was fed values ​​for testing. These test values
+    are the basis for the queries, views, stored procedures and triggers.
+    The tools used to build the database were: \textit{br-Modelo}
+    to the conceptual model, MySQL Workbench for logic modeling, and
+    SQL Server in conjunction with SQL Server Management Studio to
+    implementing the physical model.
+    
+    \noindent    
+     \textbf {Keywords}: Database. Logic modeling. Conceptual Modeling.
    \vspace{\onelineskip}
- 
-   \noindent 
-   \textbf{Key-words}: Algorithm Complexity. Image Procesing. Heterogeneous Computing.
  \end{otherlanguage*}
 \end{resumo}
 
@@ -1467,7 +1388,7 @@ Segue o código das triggers:
 \section{Esquema de backup}
 
 No script abaixo, pode-se notar a implementação de um backup completo da base de dados para o local 
-``C:\\Pizzaria\\PizzariaCompleto.BAK''
+``C:\textbackslash \textbackslash Pizzaria\textbackslash \textbackslash PizzariaCompleto.BAK''
 \lstinputlisting{../sql/Backup.sql}
 
 % ---
