@@ -455,17 +455,7 @@
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
     O projeto proposto tem por objetivo a modelagem conceitual, lógica e física de um projeto de Banco de Dados
-    para gerenciamento/automatização de uma pizzaria. A modelagem foi realizada tomando por base os seguintes 
-    requisitos:
-    \begin {enumerate}
-        \item Opção de realização de pedidos online;
-        \item Pizzaria delivery;
-        \item Após cadastro, opção do cliente cadastrar dependentes;
-        \item Registro de admissão e demissão de funcionários;
-        \item Log automático das atividades dos funcionários;
-        \item Controle de estoque com base nos fornecedores e nos ingredientes das pizzas;
-        \item Esquema de backup automático da base de dados.
-    \end {enumerate}
+    para gerenciamento/automatização de uma pizzaria. 
 
     Depois de gerado o modelo físico, implementou-se a solução utilizando o \textit{SQL Server Management Studio}. 
     Com base nessa implementação, consultas, \textit{views}, \textit{triggers}, entre outras rotinas, foram criadas para 
@@ -507,68 +497,120 @@ A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
 % ----------------------------------------------------------
 \chapter {Regras de Negócio}
 
+A modelagem foi realizada tomando por base as seguintes regras de negócio
+    requisitos:
+    \begin {enumerate}
+        \item Opção de realização de pedidos online;
+        \item Pizzaria delivery;
+        \item Após cadastro, opção do cliente cadastrar dependentes;
+        \item Registro de admissão e demissão de funcionários;
+        \item Log automático das atividades dos funcionários;
+        \item Controle de estoque com base nos fornecedores e nos ingredientes das pizzas;
+        \item Esquema de backup automático da base de dados.
+    \end {enumerate}
+
 % ----------------------------------------------------------
 % Modelo Conceitual
 % ----------------------------------------------------------
 \chapter{Modelo Conceitual}
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_01}
-         \caption{ }
-         \label{}
-    \end{figure}
+    O modelo conceitual foi elaborado no programa \textit{BrModelo}. A Figura \ref{mc01} 
+    mostra como foi feita a modelagem para que os pedidos realizados pelos funcionários fossem 
+    armazenados na tabela \textit{Log}. Isso é feito através de triggers.
     
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_02}
-         \caption{ }
-         \label{}
-    \end{figure}
+         \includegraphics[width=15cm,keepaspectratio]{Imgs/MC_01}
+         \caption{Utilização de triggers para alimentar a tabela \textit{Log}}.
+         \label{mc01}
+    \end{figure}    
 
+    \newpage
+    
+    Na Figura \ref{mc_02} é possível notar que cada funcionário pode term 
+    nenhum ou vários dependentes. Também é possível observar que os clientes podem 
+    realizar nenhum ou vários pedidos, mas cada pedido pertence a um único cliente.
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_03}
-         \caption{ }
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/MC_02}
+         \caption{Entidades: Dependentes, Clientes e Pedidos.}
+         \label{mc_02}
     \end{figure}
 
+    \newpage
+
+    De acordo com a Figura \ref{mc_03}, é possível observar que o 
+    Fornecedor alimenta o estoque e os produtos são feitos com ingredientes 
+    retirados do estoque.
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio,angle=90]{../BancoDeDadosPizzaria/Imgs/MC_00}
-         \caption{ }
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/MC_03}
+         \caption{Entidades: Fornecedor, Estoque e Produtos}
+         \label{mc_03}
+    \end{figure}
+
+    \newpage
+    
+    Na Figura \ref{mc_00} é possível observar como ficou a modelagem completa 
+    do sistema.
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=20cm,keepaspectratio,angle=90]{Imgs/MC_00}
+         \caption{Modelo Conceitual Completo.}
+         \label{mc_00}
     \end{figure}    
 
 % ----------------------------------------------------------
 % Modelo Lógico
 % ----------------------------------------------------------
 \chapter{Modelo Lógico}
+    
+    A Figura \ref{ml_01} representa, conforme o modelo conceitual, a possibilidade do 
+    cliente ter ou não login. Isso não impede que o mesmo efetue pedido. Isso aconteceria, 
+    por exemplo, no caso do cliente nunca ter feito pedido online.
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_01}
-         \caption{ }
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/ML_01}
+         \caption{Modelo Lógico: Dependentes, Clientes, Logins e Pedidos}
+         \label{ml_01}
     \end{figure}
+    
+    \newpage
+    
+    Na Figura \ref{ml_02} é possível observar os produtos sendo compostos por um ou mais ingredientes; 
+    os ingredientes sendo compostos por um ou mais itens do estoque, mas cada item do estoque podendo 
+    ser utilizado apenas em uma lista de ingredientes. Também é possível observar a tabela Estoques\_Fornecedores, 
+    podendo conter vários fornecedores vários itens para o estoque.
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/ML_02}
+         \caption{Modelo Lógico: Produtos, Ingredientes, Produtos\_Pedidos, Estoques, Estoques\_Fornecedores e Fornecedores.}
+         \label{ml_02}
+    \end{figure}
+    
+        \newpage
+    
+    A Figura \ref{ml_03} mostra a tabela Logs dos funcionários. Essa tabela guarda todas as ações dos 
+    funcionários para possível auditorias. É possível observar também que os funcionários têm cargos e 
+    cada cargo pode ter muitos funcionários, mas cada funcionários pode ter apenas um cargo na empresa. 
+    Como um funcinário pode ser demitido e depois recontradado, existe uma tabela chamada 
+    \textit{Funcionarios\_Admissoes} onde são salvas as informações a respeito da contratação dos 
+    funcionários.
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=9cm,keepaspectratio]{Imgs/ML_03}
+         \caption{Modelo Lógico: Logs, Funcionários, Cargos, Funcionarios\_Admissoes e Admissoes.}
+         \label{ml_03}
+    \end{figure}
+    
+    \newpage
+    
+    A Figura \ref{ml_00} contém o modelo lógico completo.
     
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_02}
-         \caption{ }
-         \label{}
-    \end{figure}
-    
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_03}
-         \caption{ }
-         \label{}
-    \end{figure}
-    
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/ML_00}
-         \caption{ }
-         \label{}
+         \includegraphics[width=20cm,keepaspectratio, angle=90]{Imgs/ML_00}
+         \caption{Modelo Lógico completo.}
+         \label{ml_00}
     \end{figure}
 
     
@@ -576,8 +618,262 @@ A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
 % Implementação
 % ----------------------------------------------------------
 \chapter{Implementação}
-    O banco de dados foi implementado utilizando o \textit{software SQL Server 2010}.
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/ModeloFísico.sql}
+    O banco de dados foi implementado utilizando o \textit{software SQL Server 2010}. Segue o código de execução para a criação das tabelas:
+    
+    \begin{lstlisting}
+        USE master
+        GO
+
+        IF EXISTS (select name from sys.databases where name = 'Pizzaria')
+                DROP DATABASE Pizzaria
+        go
+
+        CREATE DATABASE Pizzaria
+        go
+
+        USE Pizzaria
+        go
+
+        SET DATEFORMAT dmy
+        go
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Logins
+        -- -----------------------------------------------------
+        CREATE TABLE Logins (
+          idLogin INT NOT NULL,
+          Usuario VARCHAR(45) NULL,
+          Senha VARCHAR(20) NULL,
+          PRIMARY KEY (idLogin)
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Clientes
+        -- -----------------------------------------------------
+        CREATE TABLE Clientes (
+          idCliente INT NOT NULL PRIMARY KEY,
+          Nome VARCHAR (200) NOT NULL,
+          Endereco VARCHAR(200) NULL,
+          idLogin INT DEFAULT NULL,
+          Telefone VARCHAR(18) NULL,
+          CONSTRAINT fk_Clientes_Logins
+            FOREIGN KEY (idLogin)
+            REFERENCES Logins (idLogin)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Cargos
+        -- -----------------------------------------------------
+        CREATE TABLE Cargos (
+          idCargo INT NOT NULL,
+          Salario DECIMAL(6,2) NULL,
+          NomeCargo VARCHAR(25) NULL,
+          PRIMARY KEY (idCargo)
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Funcionarios
+        -- -----------------------------------------------------
+        CREATE TABLE Funcionarios (
+          Nome VARCHAR(45) NULL,
+          Endereco VARCHAR(200) NULL,
+          Telefone VARCHAR(18) NULL,
+          CPF VARCHAR(11) NOT NULL,
+          RG VARCHAR(10) NULL,
+          NumCarteira VARCHAR(45) NULL,
+          DataNascimento DATE NULL,
+          idCargo INT NOT NULL,
+          PRIMARY KEY (CPF),
+          CONSTRAINT fk_Funcionarios_Cargos
+            FOREIGN KEY (idCargo)
+            REFERENCES Cargos (idCargo)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Pedidos
+        -- -----------------------------------------------------
+        CREATE TABLE Pedidos (
+          idPedido INT NOT NULL,
+          data DATETIME NULL,
+          idCliente INT NOT NULL,
+          CPF VARCHAR(11) NOT NULL,
+          Endereco VARCHAR(200) NULL,
+          PRIMARY KEY (idPedido),
+          CONSTRAINT fk_Pedidos_Clientes
+            FOREIGN KEY (idCliente)
+            REFERENCES Clientes (idCliente)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+          CONSTRAINT fk_Pedidos_Funcionarios
+            FOREIGN KEY (CPF)
+            REFERENCES Funcionarios (CPF)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Dependentes
+        -- -----------------------------------------------------
+        CREATE TABLE Dependentes (
+          idDependentes INT NOT NULL,
+          Nome VARCHAR(45) NULL,
+          idCliente INT NOT NULL,
+          PRIMARY KEY (idDependentes),
+          CONSTRAINT fk_Dependentes_Clientes
+            FOREIGN KEY (idCliente)
+            REFERENCES Clientes (idCliente)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Produtos
+        -- -----------------------------------------------------
+        CREATE TABLE Produtos (
+          idProduto INT NOT NULL,
+          Nome VARCHAR(45) NULL,
+          PRIMARY KEY (idProduto)
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Estoques
+        -- -----------------------------------------------------
+        CREATE TABLE Estoques (
+          idEstoque INT NOT NULL,
+          Produto VARCHAR(45) NULL,
+          Quantidade INT NULL,
+          PRIMARY KEY (idEstoque)
+        )
+        GO
+
+
+        -------------------------------------------------------
+        -- Table Pizzaria.Ingredientes
+        -------------------------------------------------------
+        CREATE TABLE Ingredientes (
+	        idProduto INT NOT NULL,
+	        idEstoque INT NOT NULL,
+	        Qtd FLOAT NOT NULL,
+	        FOREIGN KEY (idProduto)
+			        REFERENCES Produtos (idProduto)
+			        ON DELETE NO ACTION
+			        ON UPDATE NO ACTION,
+	        FOREIGN KEY (idEstoque)
+			        REFERENCES Estoques (idEstoque) 
+			        ON DELETE NO ACTION
+			        ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Fornecedores
+        -- -----------------------------------------------------
+        CREATE TABLE Fornecedores (
+          idFornecedor INT NOT NULL,
+          Nome VARCHAR(45) NULL,
+          CNPJ VARCHAR(25) NULL,
+          Endereco VARCHAR(95) NULL,
+          Telefone VARCHAR(18) NULL,
+          PRIMARY KEY (idFornecedor)
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Estoques_Fornecedores
+        -- -----------------------------------------------------
+        CREATE TABLE Estoques_Fornecedores (
+          idEstoque INT NOT NULL,
+          idFornecedor INT NOT NULL,
+          CONSTRAINT fk_Estoque_has_Fornecedor_Estoque
+            FOREIGN KEY (idEstoque)
+            REFERENCES Estoques (idEstoque)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+          CONSTRAINT fk_Estoque_has_Fornecedor_Fornecedor
+            FOREIGN KEY (idFornecedor)
+            REFERENCES Fornecedores (idFornecedor)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Produtos_Pedidos
+        -- -----------------------------------------------------
+        CREATE TABLE Produtos_Pedidos (
+          idProduto INT NOT NULL,
+          idPedido INT NOT NULL,
+          CONSTRAINT fk_Produtos_has_Pedidos_Produtos
+            FOREIGN KEY (idProduto)
+            REFERENCES Produtos (idProduto)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+          CONSTRAINT fk_Produtos_has_Pedidos_Pedidos
+            FOREIGN KEY (idPedido)
+            REFERENCES Pedidos (idPedido)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Admissoes
+        -- -----------------------------------------------------
+        CREATE TABLE Admissoes (
+          idAdmissao INT NOT NULL,
+          DataAdmissao DATE NULL,
+          DataDemissao DATE NULL,
+          PRIMARY KEY (idAdmissao)
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Funcionarios_Admissoes
+        -- -----------------------------------------------------
+        CREATE TABLE Funcionarios_Admissoes (
+          CPF VARCHAR(11) NOT NULL,
+          idAdmissão INT NOT NULL,
+          CONSTRAINT fk_Funcionarios_has_Admissão_Funcionarios
+            FOREIGN KEY (CPF)
+            REFERENCES Funcionarios (CPF)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+          CONSTRAINT fk_Funcionarios_has_Admissão_Admissão
+            FOREIGN KEY (idAdmissão)
+            REFERENCES Admissoes (idAdmissao)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+
+        -- -----------------------------------------------------
+        -- Table Pizzaria.Logs
+        -- -----------------------------------------------------
+        CREATE TABLE Logs (
+          idLog INT NOT NULL,
+          DescAtividade VARCHAR(200) NULL,
+          DataHora DATETIME NULL,
+          CPF VARCHAR(11) NOT NULL,
+          PRIMARY KEY (idLog),
+          CONSTRAINT fk_Log_Funcionarios
+            FOREIGN KEY (CPF)
+            REFERENCES Funcionarios (CPF)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+        )
+        GO
+    \end{lstlisting}
 
 % ----------------------------------------------------------
 % Execução e Testes
@@ -587,122 +883,341 @@ A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
     
 \section{Consultas}
     % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_001.sql}
+    A consulta a seguir foi realizada utilizando as tabelas Estoques e Fornecedores 
+    e o resultado pode ser visualizado na figra \ref{select01}
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Lista alimentos e seus fornecedores
+-- -----------------------------------------------------    
+SELECT  Estoques.Produto as [Alimento], 
+        Fornecedores.Nome as [Fornecedor] 
+    FROM Estoques_Fornecedores
+	    INNER JOIN Estoques ON 
+	        Estoques.idEstoque = Estoques_Fornecedores.idEstoque 
+	    INNER JOIN Fornecedores ON 
+	        Fornecedores.idFornecedor = Estoques_Fornecedores.idFornecedor
+	ORDER BY Fornecedores.Nome, Estoques.Produto
+GO      
+    \end{lstlisting}
+    
     % Mostrar resultado
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_001}
-         \caption{Resultado do select}
-         \label{}
+         \includegraphics[width=6cm,keepaspectratio]{Imgs/Select_001}
+         \caption{Resultado do select Lista alimentos e seus fornecedores}
+         \label{select01}
     \end{figure}
+    
+    \newpage
+    \newpage
     
     % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_002.sql}
-    % Mostrar resultado
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_002}
-         \caption{Resultado do select}
-         \label{}
-    \end{figure}
+    A consulta a seguir foi realizada utilizando as tabelas Produtos e Estoques  
+    e o resultado pode ser visualizado na figura \ref{select02}
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Lista os nomes dos produtos, seus ingredientes e a
+-- quantidade em estoque
+-- -----------------------------------------------------
+SELECT  Produtos.Nome, 
+        Estoques.Produto, 
+        Estoques.Quantidade 
+    FROM Ingredientes
+	    INNER JOIN Produtos ON 
+	        Produtos.idProduto = Ingredientes.idProduto 
+    	INNER JOIN Estoques ON 
+        	Estoques.idEstoque = Ingredientes.idEstoque 
+	ORDER BY Produtos.Nome, Estoques.Produto
+GO    
     
-    % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_003.sql}
+    \end{lstlisting}
     % Mostrar resultado
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_003}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/Select_002}
          \caption{Resultado do select}
-         \label{}
-    \end{figure}
-    
-    %Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_004.sql}
-    % Mostrar resultado
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_004}
-         \caption{Resultado do select}
-         \label{}
-    \end{figure}
-    
-    % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_005.sql}
-    % Mostrar resultado
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_005}
-         \caption{Resultado do select}
-         \label{}
-    \end{figure}
-    
-    % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_006.sql}
-    % Mostrar resultado
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_006}
-         \caption{Resultado do select}
-         \label{}
+         \label{select02}
     \end{figure}
 
-    % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_007.sql}
-    % Mostrar resultado
-    \begin{figure}[h]
-         \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_007}
-         \caption{Resultado do select}
-         \label{}
-    \end{figure}    
+    \newpage
     
     % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_008.sql}
+    A consulta a seguir foi realizada utilizando as tabelas Logins e Clientes  
+    e o resultado pode ser visualizado na figra \ref{select03}.
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Lista os clientes e os logins de quem o tiver.
+-- -----------------------------------------------------
+CREATE VIEW ClientesComLogin
+AS
+	SELECT  Logins.Usuario, 
+    	Clientes.idCliente FROM Logins
+	    	RIGHT JOIN Clientes ON 
+    	Logins.idLogin = Clientes.idLogin 
+GO
+    
+    \end{lstlisting}
     % Mostrar resultado
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_008}
-         \caption{Resultado do select}
-         \label{}
+         \includegraphics[width=5cm,keepaspectratio]{Imgs/Select_003}
+         \caption{Resultado do select lista os clientes e os logins de quem o tiver.}
+         \label{select03}
     \end{figure}
+    
+    \newpage
+    
+    %Explicar
+    A consulta a seguir foi realizada utilizando as tabelas Produtos e Pedidos 
+    e o resultado pode ser visualizado na figra \ref{select04}.
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Lista produtos pedidos
+-- -----------------------------------------------------
+CREATE VIEW PedidosRealizados
+AS 
+	SELECT  Produtos.Nome AS [Produto], 
+	        Pedidos.idCliente 
+        FROM Produtos_Pedidos
+		    INNER JOIN Produtos ON 
+		        Produtos.idProduto = Produtos_Pedidos.idProduto 
+		    INNER JOIN Pedidos ON 
+		        Pedidos.idPedido = Produtos_Pedidos.idPedido 
+GO    
+    
+    \end{lstlisting}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/Select_004}
+         \caption{Resultado do select lista produtos pedidos.}
+         \label{select04}
+    \end{figure}
+
+    \newpage
+
+    % Explica
+    A consulta a seguir foi realizada utilizando as views ClientesComLogin e PedidosRealizados
+    e o resultado pode ser visualizado na figra \ref{select05}.
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Lista dos clientes que fizeram pedidos.
+-- -----------------------------------------------------
+CREATE VIEW ClientesQueFizeramPedidos
+AS
+SELECT	ClientesComLogin.Usuario,
+		PedidosRealizados.Produto
+		 FROM PedidosRealizados
+	INNER JOIN ClientesComLogin ON 
+	    ClientesComLogin.idCliente = PedidosRealizados.idCliente
+GO
+
+
+SELECT  ClientesQueFizeramPedidos.Usuario, 
+        COUNT(*) AS [Quantidade de Pedidos] 
+    FROM ClientesQueFizeramPedidos 
+	    GROUP BY ClientesQueFizeramPedidos.Usuario
+    
+    \end{lstlisting}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/Select_005}
+         \caption{Resultado do select lista dos clientes que fizeram pedidos.}
+         \label{select05}
+    \end{figure}
+    
+    \newpage
+    
+    % Explicar
+    A consulta a seguir foi realizada utilizando a view ClientesComLogin e a tabela Dependentes 
+    e o resultado pode ser visualizado na figra \ref{select06}.    
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Clientes e seus dependentes
+-- -----------------------------------------------------
+SELECT  ClientesComLogin.Usuario, 
+        Dependentes.Nome [Nome do dependente] 
+    FROM Dependentes
+	    INNER JOIN ClientesComLogin ON 
+	        ClientesComLogin.idCliente = Dependentes.idCliente
+    
+    \end{lstlisting}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/Select_006}
+         \caption{Resultado do select clientes e seus dependentes} 
+         \label{select06}
+    \end{figure}
+
+    \newpage
+    
+    % Explicar
+    A consulta a seguir foi realizada utilizando as tabelas Funcionários e Cargos
+    e o resultado pode ser visualizado na figra \ref{select07}. 
+    \begin{lstlisting}
+-- -----------------------------------------------------
+-- Funcionários e Cargos
+-- -----------------------------------------------------
+SELECT  Funcionarios.Nome, 
+        Funcionarios.CPF, 
+        Cargos.NomeCargo, 
+        Cargos.Salario 
+    FROM Funcionarios
+	    INNER JOIN Cargos ON
+	        Cargos.idCargo = Funcionarios.idCargo
+	ORDER BY Cargos.NomeCargo, Funcionarios.Nome
+GO  
+    \end{lstlisting}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/Select_007}
+         \caption{Resultado do select Funcionários e Cargos}
+         \label{select07}
+    \end{figure}    
+    
+    \newpage
+    
+    % Explicar
+    A consulta a seguir foi realizada utilizando as tabelas Funcionários e Cargos
+    e o resultado pode ser visualizado na figra \ref{select08}. 
+    \begin{lstlisting}
+    
+-- -----------------------------------------------------
+-- Funcionários, cargos e suas admissões
+-- -----------------------------------------------------
+SELECT  Funcionarios.Nome, 
+        Admissoes.DataAdmissao, 
+        Cargos.NomeCargo, 
+        Cargos.Salario 
+    FROM Funcionarios_Admissoes
+	    INNER JOIN Funcionarios ON 
+	        Funcionarios.CPF = Funcionarios_Admissoes.CPF 
+	    INNER JOIN Admissoes 
+	        ON Admissoes.idAdmissao = Funcionarios_Admissoes.idAdmissão 
+	    INNER JOIN Cargos 
+	        ON Cargos.idCargo = Funcionarios.idCargo
+GO
+
+    
+    \end{lstlisting}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/Select_008}
+         \caption{Resultado do select funcionários, cargos e suas admissões}
+         \label{select08}
+    \end{figure}
+    
+    \newpage
        
 \section{Procedimentos armazenados}
 
     % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_001.sql}
+    Procedimento armazenado para cálculo do aniversários de cada funcionário na empresa.
+    \begin{lstlisting}
+CREATE PROCEDURE usp_idadeFuncionarios
+AS
+	SELECT  Nome, 
+	        DATEDIFF(YEAR, DataNascimento, GETDATE()) - CASE 
+					WHEN GETDATE() < DATEADD(YEAR, 
+					    DATEDIFF(YEAR,DataNascimento, 
+                                 GETDATE()), 
+				                 DataNascimento)
+						THEN 1
+						ELSE 0
+					END AS 'Idade',  
+					        CONVERT(VARCHAR(10), 
+					        DataNascimento, 103) As 'Data de Nascimento'
+    	FROM Funcionarios
+GO
+
+EXEC usp_idadeFuncionarios
+GO
+    \end{lstlisting}
+    
+    Depois de executado, o reultado obtido pode ser visualizado na Figura \ref{usp_001}.
+    
     % Mostrar resultado
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_001}
-         \caption{Resultado do select}
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/USP_001}
+         \caption{Procedimento Armazenado para calcular idade.}
+         \label{usp_001}
     \end{figure}
+    
+    \newpage
     
     % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_002.sql}
+    \begin{lstlisting}
+CREATE PROCEDURE usp_pedidosRealizados
+	@nome VARCHAR(45)
+AS
+	SELECT  F.Nome, 
+	        C.NomeCargo as 'Cargo', 
+	        Prod.Nome, 
+	        CONVERT(VARCHAR(10),P.data, 103) As 'Data do Pedido'  
+        FROM Funcionarios F
+            INNER JOIN Cargos C ON 
+                C.idCargo = F.idCargo
+            INNER JOIN Pedidos P ON 
+                P.CPF = F.CPF
+            INNER JOIN Produtos_Pedidos PP ON 
+                PP.idPedido = P.idPedido
+            INNER JOIN Produtos Prod ON 
+                Prod.idProduto = PP.idProduto
+        WHERE F.Nome = @nome     
+GO
+    \end{lstlisting}
+    
     % Mostrar resultado
+    Depois de executado, o reultado obtido pode ser visualizado na Figura \ref{usp_002}.
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_002}
-         \caption{Resultado do select}
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/USP_002}
+         \caption{Resultado do procedimento armazenado que retorna os pedidos realizados.}
+         \label{usp_002}
     \end{figure}
+    
+    \newpage
     
     % Explicar
-    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_003.sql}
+    \begin{lstlisting}
+CREATE PROCEDURE usp_pedidosRealizadosCliente
+	@nome VARCHAR(45)
+AS
+	SELECT  Cli.Nome, 
+	        Prod.Nome, 
+	        CONVERT(VARCHAR(10), 
+	        P.data, 103) As 'Data do Pedido'  
+    FROM Clientes Cli
+        INNER JOIN Pedidos P ON 
+            P.idCliente = Cli.idCliente
+        INNER JOIN Produtos_Pedidos PP 
+            ON PP.idPedido = P.idPedido
+        INNER JOIN Produtos Prod 
+            ON Prod.idProduto = PP.idProduto
+        WHERE Cli.Nome = @nome     
+GO
+    \end{lstlisting}
+    
+    Depois de executado, o reultado obtido pode ser visualizado na Figura \ref{usp_003p1} e 
+    também na Figura \ref{usp_003p2}.
     % Mostrar resultado
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_003p1}
-         \caption{Resultado do select}
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/USP_003p1}
+         \caption{Procedimento Armazenado que retorna os pedidos de um determinado cliente via parâmetro do nome.}
+         \label{usp_003p1}
     \end{figure}
     
     \begin{figure}[h]
          \centering
-         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_003p2}
-         \caption{Resultado do select}
-         \label{}
+         \includegraphics[width=10cm,keepaspectratio]{Imgs/USP_003p2}
+         \caption{Procedimento Armazenado que retorna os pedidos de um determinado cliente via parâmetro do nome.}
+         \label{ups_003p2}
     \end{figure}
 
 % ---
@@ -710,7 +1225,7 @@ A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
 % para que se inicie o bookmark na raiz
 % e adiciona espaço de parte no Sumário
 % ---
-\phantompart
+%\phantompart
 
 % ---
 % Conclusão
@@ -786,7 +1301,7 @@ funcional, sendo possível utilizá-lo em um ambiente real.
 % % ---
 \lipsum[30]
 
-\lstinputlisting{../BancoDeDadosPizzaria/Sql/Inserts.sql}
+%\lstinputlisting{../Sql/Inserts.sql}
 
 \end{anexosenv}
 
@@ -794,7 +1309,7 @@ funcional, sendo possível utilizá-lo em um ambiente real.
 % INDICE REMISSIVO
 %---------------------------------------------------------------------
 
-\phantompart
+%\phantompart
 \printindex
 
 \end{document}

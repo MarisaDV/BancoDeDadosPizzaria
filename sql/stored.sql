@@ -7,12 +7,18 @@ GO
 
 CREATE PROCEDURE usp_idadeFuncionarios
 AS
-	SELECT Nome, DATEDIFF(YEAR, DataNascimento, GETDATE()) - CASE 
-					WHEN GETDATE() < DATEADD(YEAR, DATEDIFF(YEAR,DataNascimento, GETDATE()),DataNascimento)
+	SELECT  Nome, 
+	        DATEDIFF(YEAR, DataNascimento, GETDATE()) - CASE 
+					WHEN GETDATE() < DATEADD(YEAR, 
+					    DATEDIFF(YEAR,DataNascimento, 
+                                 GETDATE()), 
+				                 DataNascimento)
 						THEN 1
 						ELSE 0
-					END AS 'Idade',  CONVERT(VARCHAR(10),DataNascimento, 103) As 'Data de Nascimento'
-	FROM Funcionarios
+					END AS 'Idade',  
+					        CONVERT(VARCHAR(10), 
+					        DataNascimento, 103) As 'Data de Nascimento'
+    	FROM Funcionarios
 GO
 
 EXEC usp_idadeFuncionarios
@@ -26,11 +32,19 @@ GO
 CREATE PROCEDURE usp_pedidosRealizados
 	@nome VARCHAR(45)
 AS
-	SELECT F.Nome, C.NomeCargo as 'Cargo', Prod.Nome, CONVERT(VARCHAR(10),P.data, 103) As 'Data do Pedido'  FROM Funcionarios F
-        INNER JOIN Cargos C ON C.idCargo = F.idCargo
-        INNER JOIN Pedidos P ON P.CPF = F.CPF
-        INNER JOIN Produtos_Pedidos PP ON PP.idPedido = P.idPedido
-        INNER JOIN Produtos Prod ON Prod.idProduto = PP.idProduto
+	SELECT  F.Nome, 
+	        C.NomeCargo as 'Cargo', 
+	        Prod.Nome, 
+	        CONVERT(VARCHAR(10),P.data, 103) As 'Data do Pedido'  
+        FROM Funcionarios F
+            INNER JOIN Cargos C ON 
+                C.idCargo = F.idCargo
+            INNER JOIN Pedidos P ON 
+                P.CPF = F.CPF
+            INNER JOIN Produtos_Pedidos PP ON 
+                PP.idPedido = P.idPedido
+            INNER JOIN Produtos Prod ON 
+                Prod.idProduto = PP.idProduto
         WHERE F.Nome = @nome     
 GO
 
@@ -43,11 +57,17 @@ GO
 CREATE PROCEDURE usp_pedidosRealizadosCliente
 	@nome VARCHAR(45)
 AS
-	SELECT Cli.Nome,  Prod.Nome, CONVERT(VARCHAR(10),P.data, 103) As 'Data do Pedido'  FROM 
-		Clientes Cli
-        INNER JOIN Pedidos P ON P.idCliente = Cli.idCliente
-        INNER JOIN Produtos_Pedidos PP ON PP.idPedido = P.idPedido
-        INNER JOIN Produtos Prod ON Prod.idProduto = PP.idProduto
+	SELECT  Cli.Nome, 
+	        Prod.Nome, 
+	        CONVERT(VARCHAR(10), 
+	        P.data, 103) As 'Data do Pedido'  
+    FROM Clientes Cli
+        INNER JOIN Pedidos P ON 
+            P.idCliente = Cli.idCliente
+        INNER JOIN Produtos_Pedidos PP 
+            ON PP.idPedido = P.idPedido
+        INNER JOIN Produtos Prod 
+            ON Prod.idProduto = PP.idProduto
         WHERE Cli.Nome = @nome     
 GO
 
