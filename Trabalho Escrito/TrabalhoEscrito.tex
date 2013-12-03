@@ -200,7 +200,7 @@
 	showspaces = false, % Exibe espaços com um sublinhado
 	showstringspaces = false, % Sublinha espaços em Strings
 	showtabs = false, % Exibe tabulação com um sublinhado
-	frame = l, % Envolve o código com uma moldura, pode ser single ou trBL
+	frame = single, % Envolve o código com uma moldura, pode ser single ou trBL
 	rulecolor = \color{black}, % Cor da moldura
 	tabsize = 2, % Configura tabulação em x espaços
 	captionpos = b, % Posição do título pode ser t (top) ou b (bottom)
@@ -613,7 +613,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
          \label{ml_00}
     \end{figure}
 
-    \subsection{Dicionário de dados}
+    \section{Dicionário de dados}
     
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
@@ -626,7 +626,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Admissões}
         \label{tb1_dicionario_dados_admissoes}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -638,7 +638,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Cargos}
         \label{tb1_dicionario_dados_cargos}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -652,7 +652,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Clientes}
         \label{tb1_dicionario_dados_clientes}
     \end{table}
-     \\
+     
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -664,7 +664,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Dependentes}
         \label{tb1_dicionario_dados_dependentes}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -678,7 +678,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Estoques}
         \label{tb1_dicionario_dados_estoques}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -692,7 +692,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Fornecedores}
         \label{tb1_dicionario_dados_fornecedores}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -711,7 +711,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados  - Tabela Funcionários}
         \label{tb1_dicionario_dados_funcionarios}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -723,7 +723,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Ingredientes}
         \label{tb1_dicionario_dados_ingredientes}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -735,7 +735,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Logins}
         \label{tb1_dicionario_dados_logins}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -748,7 +748,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Logs}
         \label{tb1_dicionario_dados_logs}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
@@ -762,11 +762,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
         \caption{Dicionário de Dados - Tabela Pedidos}
         \label{tb1_dicionario_dados_pedidos}
     \end{table}
-    \\
+    
     \begin{table}[htbp]
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
         \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
             Produtos & idProduto & int & Nao & Sim & Nao & - & PK dos produtos vendidos na pizzaria \\ \hline
             Produtos & Nome & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
             Produtos\_Pedidos & idProduto & int & Nao & Nao & Sim & Produtos & FK dos produtos \\ \hline
@@ -1474,9 +1474,8 @@ funcional, sendo possível utilizá-lo em um ambiente real.
 % % ---
 \chapter{Dados inseridos para teste}
 % % ---
-\lipsum[30]
 
-%\lstinputlisting{../Sql/Inserts.sql}
+\lstinputlisting{../sql/Inserts.sql}
 
 \end{anexosenv}
 
