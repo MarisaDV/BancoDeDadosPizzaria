@@ -55,7 +55,7 @@
 % ---
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-% \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+%\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
 \usepackage{color}				% Controle das cores
@@ -137,22 +137,19 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{\textsc{Modelo de banco de dados pizzaria: Modelagem e implementação}}
+\titulo{\textsc{Modelo de Banco de Dados para Gerenciamento de Pizzaria: Modelagem e Implementação}}
 \autor{Guilherme Augusto de Macedo \and Matheus Liberato Domingues da Silva \and Victor Hugo Carlquist da Silva}
 \local{Campos do Jordão}
 \data{2013}
 \orientador{Paulo Giovani de Faria Zeferino}
 % \coorientador{Equipe \abnTeX}
-\instituicao{%
-  Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - \textit{campus} Campos do Jordão}
+\instituicao{Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - \textit{campus} Campos do Jordão}
 \tipotrabalho{Trabalho Final}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
 \preambulo{Trabalho final apresentado na disciplina de Banco de Dados II no quarto módulo do curso de Tecnologia em Análise e Desenvolvimento de Sistemas do IFSP-CJO.}
-% ---
 
 
-% ---
 % Configurações de aparência do PDF final
 
 % alterando o aspecto da cor azul
@@ -170,7 +167,7 @@
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
+    	filecolor=magenta,      	% color of file links
 		urlcolor=blue,
 		bookmarksdepth=4
 }
@@ -192,6 +189,31 @@
 % ---
 \makeindex
 % ---
+
+\lstset{language=SQL,
+	basicstyle = \ttfamily\footnotesize, % Tamanho da fonte do código
+	numbers = left, % Posição da numeração das linhas
+	numberstyle = \tiny\color{blue}, % Estilo da numeração de linhas
+	stepnumber = 1, % Numeração das linhas ocorre a cada quantas linhas?
+	numbersep = 10pt, % Distância entre a numeração das linhas e o código
+	backgroundcolor = \color{white}, % Cor de fundo
+	showspaces = false, % Exibe espaços com um sublinhado
+	showstringspaces = false, % Sublinha espaços em Strings
+	showtabs = false, % Exibe tabulação com um sublinhado
+	frame = l, % Envolve o código com uma moldura, pode ser single ou trBL
+	rulecolor = \color{black}, % Cor da moldura
+	tabsize = 2, % Configura tabulação em x espaços
+	captionpos = b, % Posição do título pode ser t (top) ou b (bottom)
+	breaklines = true, % Configura quebra de linha automática
+	breakatwhitespace= false, % Configura quebra de linha
+	%title = \lstname, % Exibe o nome do arquivo incluido
+	%caption = \lstname, % Também é possível usar caption no lugar de title
+	keywordstyle = \color{blue}, % Estilo das palavras chaves
+	commentstyle = \color{green}, % Estilo dos Comentários
+	stringstyle = \color{red}, % Estilo de Strings
+	escapeinside = {\%*}{*)}, % Permite adicionar comandos LaTeX dentro doseu có digo
+	morekeywords ={*,USE,GO} % Se quiser adicionar mais palavras-chave
+}
 
 % ----
 % Início do documento
@@ -322,9 +344,9 @@
 \end{folhadeaprovacao}
 % ---
 
-% ---
+% ----------------------------------------------------------
 % RESUMOS
-% ---
+% ----------------------------------------------------------
 
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
@@ -428,235 +450,260 @@
 \textual
 
 % ----------------------------------------------------------
-% Introdução
+% Intrudução
 % ----------------------------------------------------------
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
+    O projeto proposto tem por objetivo a modelagem conceitual, lógica e física de um projeto de Banco de Dados
+    para gerenciamento/automatização de uma pizzaria. A modelagem foi realizada tomando por base os seguintes 
+    requisitos:
+    \begin {enumerate}
+        \item Opção de realização de pedidos online;
+        \item Pizzaria delivery;
+        \item Após cadastro, opção do cliente cadastrar dependentes;
+        \item Registro de admissão e demissão de funcionários;
+        \item Log automático das atividades dos funcionários;
+        \item Controle de estoque com base nos fornecedores e nos ingredientes das pizzas;
+        \item Esquema de backup automático da base de dados.
+    \end {enumerate}
 
-	Com a grande necessidade de armazenar informações e consultá-las de forma rápida.
-
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-% ROTEIRO DO DOCUMENTO
-
+    Depois de gerado o modelo físico, implementou-se a solução utilizando o \textit{SQL Server Management Studio}. 
+    Com base nessa implementação, consultas, \textit{views}, \textit{triggers}, entre outras rotinas, foram criadas para 
+    fins de execução e testes.
+    
+    Os capítulos seguintes estão divididos em Metodologia Proposta, onde é detalhada a metodologia utilizada para a 
+    execução o projeto, seguidos de explicações a respeito do modelo conceitual, lógico e físico. Posteriormente, 
+    as consultas realizadas são explicadas, assim como o restante das rotinas elaboradas.
 
 % ----------------------------------------------------------
-% PARTE - preparação da pesquisa
+% Metodologia Proposta
 % ----------------------------------------------------------
-% \part{Preparação da pesquisa}
+\chapter{Metodologia Proposta}
 
-% ----------------------------------------------------------
-% Capitulo com exemplos de comandos inseridos de arquivo externo 
-% ----------------------------------------------------------
-
-% \include{abntex2-modelo-include-comandos}
-
-% ----------------------------------------------------------
-% Parte de revisão de literatura
-% ----------------------------------------------------------
-% \part{Referenciais teóricos}
-
-% ---
-% Capitulo de revisão de literatura
-% ---
-\chapter{Metodologia Prosposta}
-
-Para a execução dessa trablho a metodologia foi dividida nas seguintes etapas: \emph{Criação do modelo conceitual}, \emph{Criação do modelo lógico}, \emph{Criação do modelo físico}, \emph{Implementação} e \emph{Execução e Testes}. A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
+Para a execução dessa trabalho a metodologia foi dividida em três 
+etapas: \emph{Criação do modelo conceitual}, \emph{Criação do modelo lógico}, 
+\emph{Criação do modelo físico}, \emph{Implementação} e \emph{Execução e Testes}. 
+A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
 
 \begin{figure}[h]
-\caption{Epatas da metodologia}
-\centering
+    \caption{Epatas da metodologia}
+    \centering
 
-\begin{tikzpicture}
-  [node distance=.8cm,
-  start chain=going below,]
-     \node[punktchain, join] (etapa1) {Criação do modelo conceitual};
-     \node[punktchain, join] (etapa2) {Criação do modelo lógico};
-     \node[punktchain, join] (etapa3) {Criação do modelo físico};
-     \node[punktchain, join] (etapa4) {Implementação};
-     \node[punktchain, join] (etapa5) {Execução e Testes};
-\end{tikzpicture}
+    \begin{tikzpicture}
+      [node distance=.8cm, start chain=going below,]
+         \node[punktchain, join] (etapa1) {Criação do modelo conceitual};
+         \node[punktchain, join] (etapa2) {Criação do modelo lógico};
+         \node[punktchain, join] (etapa3) {Criação do modelo físico};
+         \node[punktchain, join] (etapa4) {Implementação};
+         \node[punktchain, join] (etapa5) {Execução e Testes};
+    \end{tikzpicture}
 
-\legend{Fonte: Autor}
-\label{figuramet}
+    \legend{Fonte: Autor}
+    \label{figuramet}
 \end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% ----------------------------------------------------------
+% Regras de Negócio
+% ----------------------------------------------------------
+\chapter {Regras de Negócio}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\chapter{Regras de Negócio}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+% ----------------------------------------------------------
+% Modelo Conceitual
+% ----------------------------------------------------------
 \chapter{Modelo Conceitual}
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_01}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_02}
+         \caption{ }
+         \label{}
+    \end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/MC_03}
+         \caption{ }
+         \label{}
+    \end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio,angle=90]{../BancoDeDadosPizzaria/Imgs/MC_00}
+         \caption{ }
+         \label{}
+    \end{figure}    
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+% ----------------------------------------------------------
+% Modelo Lógico
+% ----------------------------------------------------------
 \chapter{Modelo Lógico}
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_01}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_02}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/ML_03}
+         \caption{ }
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio, angle=90]{../BancoDeDadosPizzaria/Imgs/ML_00}
+         \caption{ }
+         \label{}
+    \end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\chapter{Modelo Físico}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+    
+% ----------------------------------------------------------
+% Implementação
+% ----------------------------------------------------------
 \chapter{Implementação}
+    O banco de dados foi implementado utilizando o \textit{software SQL Server 2010}.
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/ModeloFísico.sql}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% ----------------------------------------------------------
+% Execução e Testes
+% ----------------------------------------------------------
+\chapter {Execução e Testes}
+    As execuções e os testes foram feitos utilizando o \textit{software SQL Server Management Studio 2010}.
+    
+\section{Consultas}
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_001.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_001}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_002.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_002}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_003.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_003}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    %Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_004.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_004}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_005.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_005}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_006.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_006}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_007.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_007}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}    
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/Select_008.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/Select_008}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+       
+\section{Procedimentos armazenados}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\chapter{Execução e Testes}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_001.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_001}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_002.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_002}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    % Explicar
+    \lstinputlisting{../BancoDeDadosPizzaria/Sql/USP_003.sql}
+    % Mostrar resultado
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_003p1}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
+    
+    \begin{figure}[h]
+         \centering
+         \includegraphics[width=10cm,keepaspectratio]{../BancoDeDadosPizzaria/Imgs/USP_003p2}
+         \caption{Resultado do select}
+         \label{}
+    \end{figure}
 
 % ---
 % Finaliza a parte no bookmark do PDF
@@ -668,29 +715,13 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 % ---
 % Conclusão
 % ---
-\chapter*[Conclusão]{Conclusão}
-\addcontentsline{toc}{chapter}{Conclusão}
+\chapter*[Considerações]{Considerações Finais}
+\addcontentsline{toc}{chapter}{Considerações Finais}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Apesar de parecer simples, criar um banco de dados para uma pizzaria mostrou-se 
+uma tarefa cheia de detalhes a se pensar. Ao ser implementado, tornou-se 
+funcional, sendo possível utilizá-lo em um ambiente real.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
@@ -717,18 +748,24 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 % ---
 % Inicia os apêndices
 % ---
-\begin{apendicesenv}
+% \begin{apendicesenv}
 
-% Imprime uma página indicando o início dos apêndices
-\partapendices
+% % Imprime uma página indicando o início dos apêndices
+% \partapendices
 
-% ----------------------------------------------------------
-\chapter{Dicionário de Dados}
-% ----------------------------------------------------------
+% % ----------------------------------------------------------
+% \chapter{Quisque libero justo}
+% % ----------------------------------------------------------
 
-\lipsum[50]
+% \lipsum[50]
 
-\end{apendicesenv}
+% % ----------------------------------------------------------
+% \chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+% ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+% % ----------------------------------------------------------
+% \lipsum[55-57]
+
+% \end{apendicesenv}
 % ---
 
 
@@ -739,30 +776,19 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 % ---
 % Inicia os anexos
 % ---
-% \begin{anexosenv}
+\begin{anexosenv}
 
 % % Imprime uma página indicando o início dos anexos
-% \partanexos
+\partanexos
 
 % % ---
-% \chapter{Morbi ultrices rutrum lorem.}
+\chapter{Dados inseridos para teste}
 % % ---
-% \lipsum[30]
+\lipsum[30]
 
-% % ---
-% \chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-% parturient montes nascetur ridiculus mus}
-% % ---
+\lstinputlisting{../BancoDeDadosPizzaria/Sql/Inserts.sql}
 
-% \lipsum[31]
-
-% % ---
-% \chapter{Fusce facilisis lacinia dui}
-% % ---
-
-% \lipsum[32]
-
-% \end{anexosenv}
+\end{anexosenv}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
