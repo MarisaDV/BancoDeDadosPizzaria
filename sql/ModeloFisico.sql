@@ -246,6 +246,7 @@ CREATE TABLE Logs (
   idLog INT NOT NULL,
   DescAtividade VARCHAR(200) NULL,
   DataHora DATETIME NULL,
+  Tabela VARCHAR(30) NULL,
   CPF VARCHAR(11) NOT NULL,
   PRIMARY KEY (idLog),
   CONSTRAINT fk_Log_Funcionarios
