@@ -181,7 +181,7 @@
 	showspaces = false, % Exibe espaços com um sublinhado
 	showstringspaces = false, % Sublinha espaços em Strings
 	showtabs = false, % Exibe tabulação com um sublinhado
-	frame = l, % Envolve o código com uma moldura, pode ser single ou trBL
+	frame = single, % Envolve o código com uma moldura, pode ser single ou trBL
 	rulecolor = \color{black}, % Cor da moldura
 	tabsize = 2, % Configura tabulação em x espaços
 	captionpos = b, % Posição do título pode ser t (top) ou b (bottom)
@@ -450,7 +450,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
 
     \newpage
     
-    Na Figura \ref{mc_02} é possível notar que cada funcionário pode ter
+    Na Figura \ref{mc_02} é possível notar que cada cliente pode ter
     nenhum ou vários dependentes. Também é possível observar que os clientes podem 
     realizar nenhum ou vários pedidos, mas cada pedido pertence a um único cliente.
     \begin{figure}[h]
@@ -532,7 +532,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     
     \begin{figure}[h]
          \centering
-         \includegraphics[width=20cm,keepaspectratio, angle=90]{Imgs/ML_00}
+         \includegraphics[width=17cm,keepaspectratio, angle=90]{Imgs/ML_00}
          \caption{Modelo Lógico completo.}
          \label{ml_00}
     \end{figure}
@@ -540,9 +540,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \section{Dicionário de dados}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Admissões}
         \label{tb1_dicionario_dados_admissoes}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline 
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -558,9 +560,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \centering
+    \rowcolors{1}{gray!10}{white}
         \caption{Dicionário de Dados - Tabela Cargos}
         \label{tb1_dicionario_dados_cargos}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -577,9 +581,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Clientes}
         \label{tb1_dicionario_dados_clientes}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -597,9 +603,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
      
     \begin{table}[htbp]
+        \rowcolors{1}{gray!10}{white}
+        \centering
         \caption{Dicionário de Dados - Tabela Dependentes}
         \label{tb1_dicionario_dados_dependentes}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline 
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -615,9 +623,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Estoques}
         \label{tb1_dicionario_dados_estoques}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -635,9 +645,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Fornecedores}
         \label{tb1_dicionario_dados_fornecedores}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -655,9 +667,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados  - Tabela Funcionários}
         \label{tb1_dicionario_dados_funcionarios}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -680,9 +694,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Ingredientes}
         \label{tb1_dicionario_dados_ingredientes}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -698,9 +714,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Logins}
         \label{tb1_dicionario_dados_logins}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -716,9 +734,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Logs}
         \label{tb1_dicionario_dados_logs}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -730,14 +750,17 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
             idLog & int & Nao & Sim & Nao & - & PK da tabela Logs \\ \hline
             DescAtividade & varchar & Sim & Nao & Nao & - & Armazena a atividade(comandos) do usuario do sistema \\ \hline
             DataHora & datetime & Sim & Nao & Nao & - & Armazena a Data da atividade e o horario \\ \hline
+            Tabela & varchar & Sim & Nao & Nao & - & Armazana o nome da tabela manipulada \\ \hline
             CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario \\ \hline
         \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Pedidos}
         \label{tb1_dicionario_dados_pedidos}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
             \hline 
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -755,9 +778,11 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \end{table}
     
     \begin{table}[htbp]
+    \rowcolors{1}{gray!10}{white}
+    \centering
         \caption{Dicionário de Dados - Tabela Produtos}
         \label{tb1_dicionario_dados_produtos}
-        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \begin{tabular}{|c|c|c|c|c|c|p{3cm}|}
         \hline
             \textbf{Atributo} & 
             \textbf{Tipo} & 
@@ -1332,7 +1357,7 @@ GO
     \end{lstlisting}
     
     % Mostrar resultado
-    Depois de executado, o reultado obtido pode ser visualizado na Figura \ref{usp_002}.
+    Depois de executado, o resultado obtido pode ser visualizado na Figura \ref{usp_002}.
     \begin{figure}[h]
          \centering
          \includegraphics[width=10cm,keepaspectratio]{Imgs/USP_002}
@@ -1483,4 +1508,9 @@ funcional, sendo possível utilizá-lo em um ambiente real.
 %\phantompart
 \printindex
 
+<<<<<<< HEAD
+=======
+%\bibliography{refs.bib}
+
+>>>>>>> 3e518f62fd66e03f16bb7d5c2ac2af59a8bcf8c4
 \end{document}
