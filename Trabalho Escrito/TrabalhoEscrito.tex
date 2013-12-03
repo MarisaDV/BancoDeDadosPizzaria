@@ -67,6 +67,8 @@
 \usepackage{booktabs} %Melhora o visual das tabelas
 \usepackage{tabulary} %
 \usepackage[table]{xcolor} %
+
+\usepackage{rotating}
 		
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
@@ -200,7 +202,7 @@
 	showspaces = false, % Exibe espaços com um sublinhado
 	showstringspaces = false, % Sublinha espaços em Strings
 	showtabs = false, % Exibe tabulação com um sublinhado
-	frame = single, % Envolve o código com uma moldura, pode ser single ou trBL
+	frame = l, % Envolve o código com uma moldura, pode ser single ou trBL
 	rulecolor = \color{black}, % Cor da moldura
 	tabsize = 2, % Configura tabulação em x espaços
 	captionpos = b, % Posição do título pode ser t (top) ou b (bottom)
@@ -454,14 +456,14 @@
 % ----------------------------------------------------------
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
-    O projeto proposto tem por objetivo a modelagem conceitual, lógica e física de um projeto de Banco de Dados
+    A solução proposta tem por objetivo a modelagem conceitual, lógica e física de um projeto de Banco de Dados
     para gerenciamento/automatização de uma pizzaria. 
 
     Depois de gerado o modelo físico, implementou-se a solução utilizando o \textit{SQL Server Management Studio}. 
     Com base nessa implementação, consultas, \textit{views}, \textit{triggers}, entre outras rotinas, foram criadas para 
     fins de execução e testes.
     
-    Os capítulos seguintes estão divididos em Metodologia Proposta, onde é detalhada a metodologia utilizada para a 
+    Os capítulos seguintes estão divididos em Metodologia Proposta e as Regras de Negócio onde estão detalhadas as metodologias utilizadas para a 
     execução o projeto, seguidos de explicações a respeito do modelo conceitual, lógico e físico. Posteriormente, 
     as consultas realizadas são explicadas, assim como o restante das rotinas elaboradas.
 
@@ -470,7 +472,7 @@
 % ----------------------------------------------------------
 \chapter{Metodologia Proposta}
 
-Para a execução dessa trabalho a metodologia foi dividida em três 
+Para a execução deste trabalho a metodologia foi dividida em três 
 etapas: \emph{Criação do modelo conceitual}, \emph{Criação do modelo lógico}, 
 \emph{Criação do modelo físico}, \emph{Implementação} e \emph{Execução e Testes}. 
 A figura \ref{figuramet} ilustra a sequência de execução destas etapas.
@@ -514,7 +516,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
 % ----------------------------------------------------------
 \chapter{Modelo Conceitual}
     O modelo conceitual foi elaborado no programa \textit{BrModelo}. A Figura \ref{mc01} 
-    mostra como foi feita a modelagem para que os pedidos realizados pelos funcionários fossem 
+    mostra como foi feita essa modelagem para que os pedidos realizados pelos funcionários fossem 
     armazenados na tabela \textit{Log}. Isso é feito através de triggers.
     
     \begin{figure}[h]
@@ -526,7 +528,7 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
 
     \newpage
     
-    Na Figura \ref{mc_02} é possível notar que cada funcionário pode term 
+    Na Figura \ref{mc_02} é possível notar que cada funcionário pode ter
     nenhum ou vários dependentes. Também é possível observar que os clientes podem 
     realizar nenhum ou vários pedidos, mas cada pedido pertence a um único cliente.
     \begin{figure}[h]
@@ -616,164 +618,237 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
     \section{Dicionário de dados}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Admissoes & idAdmissao & int & Nao & Sim & Nao & - & PK do registro da tabela admissoes \\ \hline
-            Admissoes & DataAdmissao & date & Sim & Nao & Nao & - & Data em que o funcionario foi admitido \\ \hline
-            Admissoes & DataDemissao & date & Sim & Nao & Nao & - & Data em que o funcionario foi demitido \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Admissões}
         \label{tb1_dicionario_dados_admissoes}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline 
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idAdmissao & int & Nao & Sim & Nao & - & PK do registro da tabela admissoes \\ \hline
+            DataAdmissao & date & Sim & Nao & Nao & - & Data em que o funcionario foi admitido \\ \hline
+            DataDemissao & date & Sim & Nao & Nao & - & Data em que o funcionario foi demitido \\ \hline
+        \end{tabular}        
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Cargos & idCargo & int & Nao & Sim & Nao & - & PK do cargo \\ \hline
-            Cargos & Salario & decimal & Sim & Nao & Nao & - & Salario correspondente ao cargo \\ \hline
-            Cargos & NomeCargo & varchar & Sim & Nao & Nao & - & Nome do cargo \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Cargos}
         \label{tb1_dicionario_dados_cargos}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idCargo & int & Nao & Sim & Nao & - & PK do cargo \\ \hline
+            Salario & decimal & Sim & Nao & Nao & - & Salario correspondente ao cargo \\ \hline
+            NomeCargo & varchar & Sim & Nao & Nao & - & Nome do cargo \\ \hline
+        \end{tabular}
+        
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Clientes & idCliente & int & Nao & Sim & Nao & - & PK dos clientes \\ \hline
-            Clientes & Nome & varchar & Nao & Nao & Nao & - & Nome dos clientes \\ \hline
-            Clientes & Endereco & varchar & Sim & Nao & Nao & - & Armazena o endereco dos clientes \\ \hline
-            Clientes & idLogin & int & Sim & Nao & Sim & Logins & FK login \\ \hline
-            Clientes & Telefone & varchar & Sim & Nao & Nao & - & Telefone dos clientes \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Clientes}
         \label{tb1_dicionario_dados_clientes}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idCliente & int & Nao & Sim & Nao & - & PK dos clientes \\ \hline
+            Nome & varchar & Nao & Nao & Nao & - & Nome dos clientes \\ \hline
+            Endereco & varchar & Sim & Nao & Nao & - & Armazena o endereco dos clientes \\ \hline
+            idLogin & int & Sim & Nao & Sim & Logins & FK login \\ \hline
+            Telefone & varchar & Sim & Nao & Nao & - & Telefone dos clientes \\ \hline
+        \end{tabular}
     \end{table}
      
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Dependentes & idDependentes & int & Nao & Sim & Nao & - & PK dos dependentes \\ \hline
-            Dependentes & Nome & varchar & Sim & Nao & Nao & - & Nome do dependente \\ \hline
-            Dependentes & idCliente & int & Nao & Nao & Sim & Clientes & FK do cliente que esta dependendo \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Dependentes}
         \label{tb1_dicionario_dados_dependentes}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline 
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idDependentes & int & Nao & Sim & Nao & - & PK dos dependentes \\ \hline
+            Nome & varchar & Sim & Nao & Nao & - & Nome do dependente \\ \hline
+            idCliente & int & Nao & Nao & Sim & Clientes & FK do cliente que esta dependendo \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Estoques & idEstoque & int & Nao & Sim & Nao & - & PK do item do estoque \\ \hline
-            Estoques & Produto & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
-            Estoques & Quantidade & int & Sim & Nao & Nao & - & Quantidade do item em estoque \\ \hline
-            Estoques\_Fornecedores & idEstoque & int & Nao & Nao & Sim & Estoques & FK do item do estoque \\ \hline
-            Estoques\_Fornecedores & idFornecedor & int & Nao & Nao & Sim & Fornecedores & FK do fornecedor \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Estoques}
         \label{tb1_dicionario_dados_estoques}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idEstoque & int & Nao & Sim & Nao & - & PK do item do estoque \\ \hline
+            Produto & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
+            Quantidade & int & Sim & Nao & Nao & - & Quantidade do item em estoque \\ \hline
+            idEstoque & int & Nao & Nao & Sim & Estoques & FK do item do estoque \\ \hline
+            idFornecedor & int & Nao & Nao & Sim & Fornecedores & FK do fornecedor \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Fornecedores & idFornecedor & int & Nao & Sim & Nao & - & PK do Forcedor \\ \hline
-            Fornecedores & Nome & varchar & Sim & Nao & Nao & - & Nome do Fornecedor \\ \hline
-            Fornecedores & CNPJ & varchar & Sim & Nao & Nao & - & Numero do cadastro de pessoa juridica \\ \hline
-            Fornecedores & Endereco & varchar & Sim & Nao & Nao & - & Endereco do fornecedor \\ \hline
-            Fornecedores & Telefone & varchar & Sim & Nao & Nao & - & Telefone do fornecedor \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Fornecedores}
         \label{tb1_dicionario_dados_fornecedores}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idFornecedor & int & Nao & Sim & Nao & - & PK do Forcedor \\ \hline
+            Nome & varchar & Sim & Nao & Nao & - & Nome do Fornecedor \\ \hline
+            CNPJ & varchar & Sim & Nao & Nao & - & Numero do cadastro de pessoa juridica \\ \hline
+            Endereco & varchar & Sim & Nao & Nao & - & Endereco do fornecedor \\ \hline
+            Telefone & varchar & Sim & Nao & Nao & - & Telefone do fornecedor \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Funcionarios & Nome & varchar & Sim & Nao & Nao & - & Nome do Funcionario \\ \hline
-            Funcionarios & Endereco & varchar & Sim & Nao & Nao & - & Endereco do Funcionario \\ \hline
-            Funcionarios & Telefone & varchar & Sim & Nao & Nao & - & Telefone do Funcionario \\ \hline
-            Funcionarios & CPF & varchar & Nao & Sim & Nao & - & PK - CPF do funcionario \\ \hline
-            Funcionarios & RG & varchar & Sim & Nao & Nao & - & RG do Funcionario \\ \hline
-            Funcionarios & NumCarteira & varchar & Sim & Nao & Nao & - & Numero da carteira de trabalho \\ \hline
-            Funcionarios & DataNascimento & date & Sim & Nao & Nao & - & Data do nascimento do Funcionario \\ \hline
-            Funcionarios & idCargo & int & Nao & Nao & Sim & Cargos & FK referencia o cargo do funcionario \\ \hline
-            Funcionarios\_Admissoes & CPF & varchar & Nao & Nao & Sim & Funcionarios & FK - referencia o funcionario \\ \hline
-            Funcionarios\_Admissoes & idAdmissão & int & Nao & Nao & Sim & Admissoes & FK - referencia a admissao \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados  - Tabela Funcionários}
         \label{tb1_dicionario_dados_funcionarios}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            Nome & varchar & Sim & Nao & Nao & - & Nome do Funcionario \\ \hline
+            Endereco & varchar & Sim & Nao & Nao & - & Endereco do Funcionario \\ \hline
+            Telefone & varchar & Sim & Nao & Nao & - & Telefone do Funcionario \\ \hline
+            CPF & varchar & Nao & Sim & Nao & - & PK - CPF do funcionario \\ \hline
+            RG & varchar & Sim & Nao & Nao & - & RG do Funcionario \\ \hline
+            NumCarteira & varchar & Sim & Nao & Nao & - & Numero da carteira de trabalho \\ \hline
+            DataNascimento & date & Sim & Nao & Nao & - & Data do nascimento do Funcionario \\ \hline
+            idCargo & int & Nao & Nao & Sim & Cargos & FK referencia o cargo do funcionario \\ \hline
+            CPF & varchar & Nao & Nao & Sim & Funcionarios & FK - referencia o funcionario \\ \hline
+            idAdmissão & int & Nao & Nao & Sim & Admissoes & FK - referencia a admissao \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Ingredientes & idProduto & int & Nao & Nao & Sim & Produtos & FK do Produto \\ \hline
-            Ingredientes & idEstoque & int & Nao & Nao & Sim & Estoques & FK do Estoque \\ \hline
-            Ingredientes & Qtd & float & Nao & Nao & Nao & - & Quantidade do ingrediente utilizado para fazer a pizza \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Ingredientes}
         \label{tb1_dicionario_dados_ingredientes}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idProduto & int & Nao & Nao & Sim & Produtos & FK do Produto \\ \hline
+            idEstoque & int & Nao & Nao & Sim & Estoques & FK do Estoque \\ \hline
+            Qtd & float & Nao & Nao & Nao & - & Quantidade do ingrediente utilizado para fazer a pizza \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Logins & idLogin & int & Nao & Sim & Nao & - & PK dos usuarios do site \\ \hline
-            Logins & Usuario & varchar & Sim & Nao & Nao & - & Usuario para efetuar login \\ \hline
-            Logins & Senha & varchar & Sim & Nao & Nao & - & Senha para acessar o site \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Logins}
         \label{tb1_dicionario_dados_logins}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idLogin & int & Nao & Sim & Nao & - & PK dos usuarios do site \\ \hline
+            Usuario & varchar & Sim & Nao & Nao & - & Usuario para efetuar login \\ \hline
+            Senha & varchar & Sim & Nao & Nao & - & Senha para acessar o site \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Logs & idLog & int & Nao & Sim & Nao & - & PK da tabela Logs \\ \hline
-            Logs & DescAtividade & varchar & Sim & Nao & Nao & - & Armazena a atividade(comandos) do usuario do sistema \\ \hline
-            Logs & DataHora & datetime & Sim & Nao & Nao & - & Armazena a Data da atividade e o horario \\ \hline
-            Logs & CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Logs}
         \label{tb1_dicionario_dados_logs}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idLog & int & Nao & Sim & Nao & - & PK da tabela Logs \\ \hline
+            DescAtividade & varchar & Sim & Nao & Nao & - & Armazena a atividade(comandos) do usuario do sistema \\ \hline
+            DataHora & datetime & Sim & Nao & Nao & - & Armazena a Data da atividade e o horario \\ \hline
+            CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Pedidos & idPedido & int & Nao & Sim & Nao & - & PK dos pedidos \\ \hline
-            Pedidos & data & datetime & Sim & Nao & Nao & - & Data que o pedido foi realizado \\ \hline
-            Pedidos & idCliente & int & Nao & Nao & Sim & Clientes & FK do cliente que efetuou o pedido \\ \hline
-            Pedidos & CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario que atendeu o pedido \\ \hline
-            Pedidos & Endereco & varchar & Sim & Nao & Nao & - & Endereco do local para entrega do pedido \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Pedidos}
         \label{tb1_dicionario_dados_pedidos}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+            \hline 
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idPedido & int & Nao & Sim & Nao & - & PK dos pedidos \\ \hline
+            data & datetime & Sim & Nao & Nao & - & Data que o pedido foi realizado \\ \hline
+            idCliente & int & Nao & Nao & Sim & Clientes & FK do cliente que efetuou o pedido \\ \hline
+            CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario que atendeu o pedido \\ \hline
+            Endereco & varchar & Sim & Nao & Nao & - & Endereco do local para entrega do pedido \\ \hline
+        \end{tabular}
     \end{table}
     
     \begin{table}[htbp]
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-        \hline
-            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
-            Produtos & idProduto & int & Nao & Sim & Nao & - & PK dos produtos vendidos na pizzaria \\ \hline
-            Produtos & Nome & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
-            Produtos\_Pedidos & idProduto & int & Nao & Nao & Sim & Produtos & FK dos produtos \\ \hline
-            Produtos\_Pedidos & idPedido & int & Nao & Nao & Sim & Pedidos & FK dos pedidos \\ \hline
-        \end{tabular}
         \caption{Dicionário de Dados - Tabela Produtos}
         \label{tb1_dicionario_dados_produtos}
+        \begin{tabular}{|l|l|l|l|l|l|p{3cm}|}
+        \hline
+            \textbf{Atributo} & 
+            \textbf{Tipo} & 
+            \textbf{Nulo} & 
+            \textbf{Pk} & 
+            \textbf{FK} & 
+            \textbf{Ref. Tab.} & 
+            \textbf{Descrição} \\ \hline
+            idProduto & int & Nao & Sim & Nao & - & PK dos produtos vendidos na pizzaria \\ \hline
+            Nome & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
+            idProduto & int & Nao & Nao & Sim & Produtos & FK dos produtos \\ \hline
+            idPedido & int & Nao & Nao & Sim & Pedidos & FK dos pedidos \\ \hline
+        \end{tabular}
     \end{table}
     
 % ----------------------------------------------------------
