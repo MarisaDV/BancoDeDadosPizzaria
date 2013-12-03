@@ -111,6 +111,7 @@ GO
 EXEC addDescricaoCampo 'Logs', 'idLog','PK da tabela Logs'
 EXEC addDescricaoCampo 'Logs', 'DescAtividade','Armazena a atividade(comandos) do usuario do sistema'
 EXEC addDescricaoCampo 'Logs', 'DataHora','Armazena a Data da atividade e o horario'
+EXEC addDescricaoCampo 'Logs', 'Tabela','Armazana o nome da tabela manipulada'
 EXEC addDescricaoCampo 'Logs', 'CPF','FK do funcionario'
 GO
 

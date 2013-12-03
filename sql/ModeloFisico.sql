@@ -141,17 +141,17 @@ GO
 -- Table Pizzaria.Ingredientes
 -- -----------------------------------------------------
 CREATE TABLE Ingredientes (
-	idProduto INT NOT NULL,
-	idEstoque INT NOT NULL,
-	Qtd FLOAT NOT NULL,
-	FOREIGN KEY (idProduto)
-			REFERENCES Produtos (idProduto)
-			ON DELETE NO ACTION
-			ON UPDATE NO ACTION,
-	FOREIGN KEY (idEstoque)
-			REFERENCES Estoques (idEstoque) 
-			ON DELETE NO ACTION
-			ON UPDATE NO ACTION
+  idProduto INT NOT NULL,
+  idEstoque INT NOT NULL,
+  Qtd FLOAT NOT NULL,
+  FOREIGN KEY (idProduto)
+      REFERENCES Produtos (idProduto)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY (idEstoque)
+      REFERENCES Estoques (idEstoque) 
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
 )
 GO
 
@@ -246,6 +246,7 @@ CREATE TABLE Logs (
   idLog INT NOT NULL,
   DescAtividade VARCHAR(200) NULL,
   DataHora DATETIME NULL,
+  Tabela VARCHAR(30) NULL,
   CPF VARCHAR(11) NOT NULL,
   PRIMARY KEY (idLog),
   CONSTRAINT fk_Log_Funcionarios
