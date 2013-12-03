@@ -1,5 +1,5 @@
 /* ****************************************************************************** *
-*  Verifica quando houver um INSERT na Produtos_Pedidos e decrementa a quantida-  *
+*  Verifica quando houver um INSERT em Produtos_Pedidos e decrementa a quantida-  *
 *  de do produto no estoque.
 * ******************************************************************************* */
 CREATE TRIGGER tg_Produtos_Pedidos
@@ -146,8 +146,6 @@ AS
 GO
 
 /* Select para verificar se a trigger foi executada com sucesso. */
-
-
 SELECT * FROM Pedidos
 
 INSERT INTO Pedidos VALUES 

@@ -613,6 +613,168 @@ A modelagem foi realizada tomando por base as seguintes regras de negócio
          \label{ml_00}
     \end{figure}
 
+    \subsection{Dicionário de dados}
+    
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Admissoes & idAdmissao & int & Nao & Sim & Nao & - & PK do registro da tabela admissoes \\ \hline
+            Admissoes & DataAdmissao & date & Sim & Nao & Nao & - & Data em que o funcionario foi admitido \\ \hline
+            Admissoes & DataDemissao & date & Sim & Nao & Nao & - & Data em que o funcionario foi demitido \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Admissões}
+        \label{tb1_dicionario_dados_admissoes}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Cargos & idCargo & int & Nao & Sim & Nao & - & PK do cargo \\ \hline
+            Cargos & Salario & decimal & Sim & Nao & Nao & - & Salario correspondente ao cargo \\ \hline
+            Cargos & NomeCargo & varchar & Sim & Nao & Nao & - & Nome do cargo \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Cargos}
+        \label{tb1_dicionario_dados_cargos}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Clientes & idCliente & int & Nao & Sim & Nao & - & PK dos clientes \\ \hline
+            Clientes & Nome & varchar & Nao & Nao & Nao & - & Nome dos clientes \\ \hline
+            Clientes & Endereco & varchar & Sim & Nao & Nao & - & Armazena o endereco dos clientes \\ \hline
+            Clientes & idLogin & int & Sim & Nao & Sim & Logins & FK login \\ \hline
+            Clientes & Telefone & varchar & Sim & Nao & Nao & - & Telefone dos clientes \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Clientes}
+        \label{tb1_dicionario_dados_clientes}
+    \end{table}
+     \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Dependentes & idDependentes & int & Nao & Sim & Nao & - & PK dos dependentes \\ \hline
+            Dependentes & Nome & varchar & Sim & Nao & Nao & - & Nome do dependente \\ \hline
+            Dependentes & idCliente & int & Nao & Nao & Sim & Clientes & FK do cliente que esta dependendo \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Dependentes}
+        \label{tb1_dicionario_dados_dependentes}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Estoques & idEstoque & int & Nao & Sim & Nao & - & PK do item do estoque \\ \hline
+            Estoques & Produto & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
+            Estoques & Quantidade & int & Sim & Nao & Nao & - & Quantidade do item em estoque \\ \hline
+            Estoques\_Fornecedores & idEstoque & int & Nao & Nao & Sim & Estoques & FK do item do estoque \\ \hline
+            Estoques\_Fornecedores & idFornecedor & int & Nao & Nao & Sim & Fornecedores & FK do fornecedor \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Estoques}
+        \label{tb1_dicionario_dados_estoques}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Fornecedores & idFornecedor & int & Nao & Sim & Nao & - & PK do Forcedor \\ \hline
+            Fornecedores & Nome & varchar & Sim & Nao & Nao & - & Nome do Fornecedor \\ \hline
+            Fornecedores & CNPJ & varchar & Sim & Nao & Nao & - & Numero do cadastro de pessoa juridica \\ \hline
+            Fornecedores & Endereco & varchar & Sim & Nao & Nao & - & Endereco do fornecedor \\ \hline
+            Fornecedores & Telefone & varchar & Sim & Nao & Nao & - & Telefone do fornecedor \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Fornecedores}
+        \label{tb1_dicionario_dados_fornecedores}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Funcionarios & Nome & varchar & Sim & Nao & Nao & - & Nome do Funcionario \\ \hline
+            Funcionarios & Endereco & varchar & Sim & Nao & Nao & - & Endereco do Funcionario \\ \hline
+            Funcionarios & Telefone & varchar & Sim & Nao & Nao & - & Telefone do Funcionario \\ \hline
+            Funcionarios & CPF & varchar & Nao & Sim & Nao & - & PK - CPF do funcionario \\ \hline
+            Funcionarios & RG & varchar & Sim & Nao & Nao & - & RG do Funcionario \\ \hline
+            Funcionarios & NumCarteira & varchar & Sim & Nao & Nao & - & Numero da carteira de trabalho \\ \hline
+            Funcionarios & DataNascimento & date & Sim & Nao & Nao & - & Data do nascimento do Funcionario \\ \hline
+            Funcionarios & idCargo & int & Nao & Nao & Sim & Cargos & FK referencia o cargo do funcionario \\ \hline
+            Funcionarios\_Admissoes & CPF & varchar & Nao & Nao & Sim & Funcionarios & FK - referencia o funcionario \\ \hline
+            Funcionarios\_Admissoes & idAdmissão & int & Nao & Nao & Sim & Admissoes & FK - referencia a admissao \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados  - Tabela Funcionários}
+        \label{tb1_dicionario_dados_funcionarios}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Ingredientes & idProduto & int & Nao & Nao & Sim & Produtos & FK do Produto \\ \hline
+            Ingredientes & idEstoque & int & Nao & Nao & Sim & Estoques & FK do Estoque \\ \hline
+            Ingredientes & Qtd & float & Nao & Nao & Nao & - & Quantidade do ingrediente utilizado para fazer a pizza \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Ingredientes}
+        \label{tb1_dicionario_dados_ingredientes}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Logins & idLogin & int & Nao & Sim & Nao & - & PK dos usuarios do site \\ \hline
+            Logins & Usuario & varchar & Sim & Nao & Nao & - & Usuario para efetuar login \\ \hline
+            Logins & Senha & varchar & Sim & Nao & Nao & - & Senha para acessar o site \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Logins}
+        \label{tb1_dicionario_dados_logins}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Logs & idLog & int & Nao & Sim & Nao & - & PK da tabela Logs \\ \hline
+            Logs & DescAtividade & varchar & Sim & Nao & Nao & - & Armazena a atividade(comandos) do usuario do sistema \\ \hline
+            Logs & DataHora & datetime & Sim & Nao & Nao & - & Armazena a Data da atividade e o horario \\ \hline
+            Logs & CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Logs}
+        \label{tb1_dicionario_dados_logs}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição \\ \hline
+            Pedidos & idPedido & int & Nao & Sim & Nao & - & PK dos pedidos \\ \hline
+            Pedidos & data & datetime & Sim & Nao & Nao & - & Data que o pedido foi realizado \\ \hline
+            Pedidos & idCliente & int & Nao & Nao & Sim & Clientes & FK do cliente que efetuou o pedido \\ \hline
+            Pedidos & CPF & varchar & Nao & Nao & Sim & Funcionarios & FK do funcionario que atendeu o pedido \\ \hline
+            Pedidos & Endereco & varchar & Sim & Nao & Nao & - & Endereco do local para entrega do pedido \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Pedidos}
+        \label{tb1_dicionario_dados_pedidos}
+    \end{table}
+    \\
+    \begin{table}[htbp]
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+        \hline
+            Tabela & Atributo & Tipo & Permite Nulo & Pk & FK & Ref. Tabela & Descrição
+            Produtos & idProduto & int & Nao & Sim & Nao & - & PK dos produtos vendidos na pizzaria \\ \hline
+            Produtos & Nome & varchar & Sim & Nao & Nao & - & Nome do produto \\ \hline
+            Produtos\_Pedidos & idProduto & int & Nao & Nao & Sim & Produtos & FK dos produtos \\ \hline
+            Produtos\_Pedidos & idPedido & int & Nao & Nao & Sim & Pedidos & FK dos pedidos \\ \hline
+        \end{tabular}
+        \caption{Dicionário de Dados - Tabela Produtos}
+        \label{tb1_dicionario_dados_produtos}
+    \end{table}
     
 % ----------------------------------------------------------
 % Implementação
@@ -1219,6 +1381,19 @@ GO
          \caption{Procedimento Armazenado que retorna os pedidos de um determinado cliente via parâmetro do nome.}
          \label{ups_003p2}
     \end{figure}
+    
+\section {Triggers}
+Foram criadas duas triggers. A primeira verifica quando houver um INSERT em Produtos\_Pedidos e decrementa a quantidade 
+do produto no estoque. A segunda verifica quando houver um INSERT, UPDATE ou DELETE na tabela Pedidos e armazena a 
+operação executada na tabela de logs.
+Segue o código das triggers:
+\lstinputlisting{../sql/Triggers.sql}
+
+\section{Esquema de backup}
+
+No script abaixo, pode-se notar a implementação de um backup completo da base de dados para o local 
+``C:\\Pizzaria\\PizzariaCompleto.BAK''
+\lstinputlisting{../sql/Backup.sql}
 
 % ---
 % Finaliza a parte no bookmark do PDF
